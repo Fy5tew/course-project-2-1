@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'SignateGrotesk';
+    src: url('../public/fonts/signategrotesk-black.ttf');
+}
+
+
+@font-face {
+    font-family: 'Meie';
+    src: url(../public/fonts/Meie.ttf);
+}
+
+
+:root {
+    --color-primary: #91c733;
+    --color-secondary: #444939;
+    --color-text: #A8AD9B;
+    --color-bg: #232323;
+
+    --font-primary: 'SignateGrotesk';
+}
+
+
+html, body {
+    margin: 0;
+
+    height: 100%;
+
+    color: var(--color-text);
+    background-color: var(--color-bg);
+
+    font-size: 16px;
+    font-family: var(--font-primary);
+    letter-spacing: 0.2ch;
+}
+
+#root {
+    height: 100%;
+}
