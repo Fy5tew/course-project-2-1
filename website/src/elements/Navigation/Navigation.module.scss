@@ -1,0 +1,39 @@
+.NavigationHorizontal, 
+.NavigationVertical 
+{
+    ul {
+        display: flex;
+        gap: 1em;
+
+        padding: 0;
+        margin: 0;
+
+        list-style: none;
+
+        li {
+            a {
+                color: var(--color-text);
+                text-decoration: none;
+
+                &:hover {
+                    color: var(--color-primary);
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+
+.NavigationHorizontal {
+    ul {
+        flex-direction: row;
+    }
+}
+
+
+.NavigationVertical {
+    ul {
+        flex-direction: column;
+    }
+}
