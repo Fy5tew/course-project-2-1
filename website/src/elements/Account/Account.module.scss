@@ -1,0 +1,15 @@
+.Account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+
+    img {
+        width: 40px;
+        aspect-ratio: 1/1;
+    }
+
+    span {
+        color: var(--color-primary);
+    }
+}
