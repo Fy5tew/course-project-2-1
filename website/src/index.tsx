@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { TitleContextProvider } from './hooks/useTitle';
+import { TitleContextProvider } from './contexts/TitleContext';
+import { MenuContextProvider } from './contexts/MenuContext';
 
 import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
@@ -19,6 +20,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <TitleContextProvider>
+    <MenuContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path='/'>
@@ -28,6 +30,7 @@ root.render(
           </Route>
         </Routes>
       </BrowserRouter>
+    </MenuContextProvider>
     </TitleContextProvider>
   </React.StrictMode>
 );
