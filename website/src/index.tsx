@@ -6,8 +6,6 @@ import { Provider } from 'react-redux';
 
 import { store } from './features/store';
 
-import { TitleContextProvider } from './contexts/TitleContext';
-
 import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
 import { LibraryPage } from './pages/LibraryPage';
@@ -22,7 +20,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <TitleContextProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/'>
@@ -32,7 +29,6 @@ root.render(
             </Route>
           </Routes>
         </BrowserRouter>
-      </TitleContextProvider>
     </Provider>
   </React.StrictMode>
 );
