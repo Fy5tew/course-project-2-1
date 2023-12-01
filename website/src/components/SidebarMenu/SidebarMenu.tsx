@@ -13,7 +13,7 @@ import { Navigation } from '../../elements/Navigation';
 import styles from './SidebarMenu.module.scss';
 
 
-const BREAKPOINT_WIDTH = 370;
+const BREAKPOINT_WIDTH = 460;
 
 
 export function SidebarMenu() {
