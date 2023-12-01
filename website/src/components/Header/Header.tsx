@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { useWindowSize } from "usehooks-ts";
 
@@ -14,13 +15,17 @@ export function Header() {
     const dispatch = useDispatch();
     const { width } = useWindowSize();
 
+    useEffect(() => {
+        if (width > BREAKPOINT_WIDTH) {
+            dispatch(menuActions.close());
+        }
+    }, [dispatch, width]);
+
     if (width < BREAKPOINT_WIDTH) {
         return (
             <HeaderMobile />
         );
     }
-
-    dispatch(menuActions.close());
 
     return (
         <HeaderDesktop />
