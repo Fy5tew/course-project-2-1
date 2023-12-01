@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { RootState } from "../store";
+
 
 export type MenuState = {
     isOpened: boolean,
@@ -31,4 +33,8 @@ export const menuSlice = createSlice({
 export const menuReducer =  menuSlice.reducer;
 
 
-export const menuActions = menuSlice.actions;
+export const menuActions = {
+    ...menuSlice.actions,
+    getState: (state: RootState) => state.menu,
+    getOpened: (state: RootState) => state.menu.isOpened, 
+};
