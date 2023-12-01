@@ -9,8 +9,8 @@ export function MenuButton() {
     const clickHandler = () => menu.toggle();
 
     const imageProps = {
-        className: menu.isOpened ? styles.ImageOpened : styles.ImageClosed,
-        src: menu.isOpened ? '/icons/menu-close.svg' : '/icons/menu-open.svg',
+        className: menu.isOpened ? styles.ImageClosed : styles.ImageOpened,
+        src: menu.isOpened ? '/icons/menu-open.svg' : '/icons/menu-close.svg',
         alt: menu.isOpened ? '☰' : '☓',
     };
 
