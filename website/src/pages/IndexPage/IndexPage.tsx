@@ -1,10 +1,13 @@
-import { useTitle } from '../../hooks/useTitle';
+import { useDispatch } from 'react-redux/es/exports'
+
+import { titleActions } from '../../features/title/titleSlice';
 
 import { PageLayout } from '../../components/PageLayout';
 
 
 export function IndexPage() {
-    useTitle('Главная');
+    const dispatch = useDispatch();
+    dispatch(titleActions.setPartial('Главная'));
     
     return (
         <PageLayout>

@@ -1,10 +1,13 @@
-import { useTitle } from '../../hooks/useTitle';
+import { useDispatch } from 'react-redux';
+
+import { titleActions } from '../../features/title/titleSlice';
 
 import { PageLayout } from '../../components/PageLayout';
 
 
 export function StorePage() {
-    useTitle('Магазин');
+    const dispatch = useDispatch();
+    dispatch(titleActions.setPartial('Магазин'));
 
     return (
         <PageLayout>

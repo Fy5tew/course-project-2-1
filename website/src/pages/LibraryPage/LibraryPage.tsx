@@ -1,10 +1,13 @@
-import { useTitle } from '../../hooks/useTitle';
+import { useDispatch } from 'react-redux'
+
+import { titleActions } from '../../features/title/titleSlice';
 
 import { PageLayout } from '../../components/PageLayout';
 
 
 export function LibraryPage() {
-    useTitle('Библиотека');
+    const dispatch = useDispatch();
+    dispatch(titleActions.setPartial('Библиотека'));
 
     return (
         <PageLayout>
