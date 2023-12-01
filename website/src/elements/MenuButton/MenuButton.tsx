@@ -1,17 +1,20 @@
-import { useMenu } from '../../hooks/useMenu';
+import { useSelector, useDispatch } from 'react-redux/es/exports';
+
+import { menuActions } from '../../features/menu/menuSlice';
 
 import styles from './MenuButton.module.scss';
 
 
 export function MenuButton() {
-    const menu = useMenu();
+    const dispatch = useDispatch();
+    const isOpened = useSelector(menuActions.getOpened);
 
-    const clickHandler = () => menu.toggle();
+    const clickHandler = () => dispatch(menuActions.toggle());
 
     const imageProps = {
-        className: menu.isOpened ? styles.ImageClosed : styles.ImageOpened,
-        src: menu.isOpened ? '/icons/menu-open.svg' : '/icons/menu-close.svg',
-        alt: menu.isOpened ? '☰' : '☓',
+        className: isOpened ? styles.ImageClosed : styles.ImageOpened,
+        src: isOpened ? '/icons/menu-open.svg' : '/icons/menu-close.svg',
+        alt: isOpened ? '☰' : '☓',
     };
 
     return (

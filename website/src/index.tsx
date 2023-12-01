@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import { store } from './features/store';
 
 import { TitleContextProvider } from './contexts/TitleContext';
-import { MenuContextProvider } from './contexts/MenuContext';
 
 import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
@@ -24,7 +23,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <TitleContextProvider>
-      <MenuContextProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/'>
@@ -34,7 +32,6 @@ root.render(
             </Route>
           </Routes>
         </BrowserRouter>
-      </MenuContextProvider>
       </TitleContextProvider>
     </Provider>
   </React.StrictMode>
