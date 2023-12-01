@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import { store } from './features/store';
 
 import { TitleContextProvider } from './contexts/TitleContext';
 import { MenuContextProvider } from './contexts/MenuContext';
@@ -19,18 +22,20 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <TitleContextProvider>
-    <MenuContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/'>
-            <Route index element={ <IndexPage /> }/>
-            <Route path='store' element={ <StorePage /> } />
-            <Route path='library' element={ <LibraryPage /> } />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </MenuContextProvider>
-    </TitleContextProvider>
+    <Provider store={store}>
+      <TitleContextProvider>
+      <MenuContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/'>
+              <Route index element={ <IndexPage /> }/>
+              <Route path='store' element={ <StorePage /> } />
+              <Route path='library' element={ <LibraryPage /> } />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </MenuContextProvider>
+      </TitleContextProvider>
+    </Provider>
   </React.StrictMode>
 );
