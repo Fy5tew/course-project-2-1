@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { SidebarMenu } from '../SidebarMenu';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
@@ -19,6 +20,7 @@ export function PageLayout({ children } : PageLayoutProps) {
                 { children }
             </div>
             <Footer />
+            <SidebarMenu />
         </div>
     );
 }
