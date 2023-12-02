@@ -5,9 +5,10 @@ import { useWindowSize } from 'usehooks-ts';
 
 import { menuActions } from '../../features/menu/menuSlice';
 
+import { Account } from '../Account';
+
 import { Logo } from '../../elements/Logo';
 import { MenuButton } from '../../elements/MenuButton';
-import { Account } from '../../elements/Account';
 import { PageNavigation } from '../../elements/PageNavigation';
 
 import styles from './SidebarMenu.module.scss';

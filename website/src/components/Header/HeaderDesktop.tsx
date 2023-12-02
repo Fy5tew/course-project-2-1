@@ -1,6 +1,7 @@
+import { Account } from '../Account';
+
 import { Logo } from '../../elements/Logo';
 import { PageNavigation } from '../../elements/PageNavigation';
-import { Account } from '../../elements/Account';
 
 import styles from './Header.module.scss';
 
