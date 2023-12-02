@@ -15,7 +15,7 @@ export function SignOutPage() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [countdown, { startCountdown }] = useCountdown({
+    const [countdown, { startCountdown, stopCountdown }] = useCountdown({
         countStart: 5,
         intervalMs: 1000,
     });
@@ -27,9 +27,10 @@ export function SignOutPage() {
 
     useEffect(() => {
         if (countdown === 0) {
+            stopCountdown();
             navigate('/');
         }
-    }, [navigate, countdown]);
+    }, [navigate, countdown, stopCountdown]);
 
     return (
         <PageLayout>
