@@ -13,14 +13,14 @@ export type AccountProps = {
 
 
 export function Account({ type }: AccountProps) {
-    const userName = useSelector(userActions.getName);
-    const avatarName = useSelector(userActions.getAvatar);
-    const avatar = useSelector(avatarsActions.getAvatar(avatarName));
+    const user = useSelector(userActions.getUser);
+    const avatar = useSelector(avatarsActions.getAvatar(user.avatar));
     
     if (type === 'full') {
         return (
             <AccountFull
-                userName={userName}
+                isAuthorized={user.isAuthorized}
+                userName={user.name}
                 avatar={avatar}
             />
         );
@@ -28,7 +28,8 @@ export function Account({ type }: AccountProps) {
 
     return (
         <AccountExpandable
-            userName={userName}
+            isAuthorized={user.isAuthorized}
+            userName={user.name}
             avatar={avatar}
         />
     );

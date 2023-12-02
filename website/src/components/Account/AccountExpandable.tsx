@@ -12,12 +12,13 @@ import styles from './Account.module.scss';
 
 
 export type AccountExpandableProps = {
+    isAuthorized: boolean,
     userName: string,
     avatar: Avatar,
 };
 
 
-export function AccountExpandable({ userName, avatar }: AccountExpandableProps) {
+export function AccountExpandable({ isAuthorized, userName, avatar }: AccountExpandableProps) {
     const accountRef = useRef(null);
     const [ isExpanded, toggleExpanded, setExpanded ] = useToggle(false);
 
@@ -36,8 +37,9 @@ export function AccountExpandable({ userName, avatar }: AccountExpandableProps) 
                 />
             </div>
             <div className={styles.ExpandablePart} data-expanded={isExpanded}>
-                <AccountNavigation 
+                <AccountNavigation
                     type='vertical'
+                    isAuthorized={isAuthorized}
                 />
             </div>
         </div>

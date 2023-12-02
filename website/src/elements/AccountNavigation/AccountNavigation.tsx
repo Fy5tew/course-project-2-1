@@ -1,7 +1,7 @@
 import { Navigation, NavigationProps, LinksData } from "../Navigation";
 
 
-const PAGES_LINKS: LinksData = [
+const UNAUTHORIZED_PAGES_LINKS: LinksData = [
     {
         text: 'Вход',
         path: '/signin',
@@ -12,12 +12,24 @@ const PAGES_LINKS: LinksData = [
     },
 ];
 
+const AUTHORIZED_PAGES_LINKS: LinksData = [
+    {
+        text: 'Мой аккаунт',
+        path: '/account',
+    },
+];
 
-export type AccountNavigationProps = Omit<NavigationProps, 'data'>;
+
+export type AccountNavigationProps = Omit<NavigationProps, 'data'> & {
+    isAuthorized: boolean;
+};
 
 
-export function AccountNavigation(props: AccountNavigationProps) {
+export function AccountNavigation({isAuthorized, ...props}: AccountNavigationProps) {
     return (
-        <Navigation {...props} data={PAGES_LINKS} />
+        <Navigation 
+            {...props}
+            data={isAuthorized ? AUTHORIZED_PAGES_LINKS : UNAUTHORIZED_PAGES_LINKS}
+        />
     );
 }

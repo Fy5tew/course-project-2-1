@@ -7,19 +7,23 @@ import styles from './Account.module.scss';
 
 
 export type AccountFullProps = {
+    isAuthorized: boolean,
     userName: string,
     avatar: Avatar,
 };
 
 
-export function AccountFull({ userName, avatar }: AccountFullProps) {
+export function AccountFull({ isAuthorized, userName, avatar }: AccountFullProps) {
     return (
         <div className={`${styles.Account} ${styles.AccountFull}`}>
             <AccountInfo 
                 userName={userName}
                 avatar={avatar}
             />
-            <AccountNavigation type='vertical' />
+            <AccountNavigation 
+                type='vertical'
+                isAuthorized={isAuthorized}
+            />
         </div>
     );
 }
