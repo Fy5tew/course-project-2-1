@@ -11,6 +11,16 @@
         list-style: none;
 
         li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5em;
+
+            img {
+                width: 1.3em;
+                aspect-ratio: 1/1;
+            }
+
             a {
                 color: var(--color-text);
                 text-decoration: none;

@@ -35,7 +35,7 @@ export function SidebarMenu() {
                     <MenuButton />
                 </div>
                 <Account type='full' />
-                <PageNavigation type='vertical' />
+                <PageNavigation type='vertical' showIcons={true} />
             </div>
         </div>
     );

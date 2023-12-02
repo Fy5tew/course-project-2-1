@@ -39,6 +39,7 @@ export function AccountExpandable({ isAuthorized, userName, avatar }: AccountExp
             <div className={styles.ExpandablePart} data-expanded={isExpanded}>
                 <AccountNavigation
                     type='vertical'
+                    showIcons={true}
                     isAuthorized={isAuthorized}
                 />
             </div>

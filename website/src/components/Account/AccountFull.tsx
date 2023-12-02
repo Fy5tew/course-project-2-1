@@ -22,6 +22,7 @@ export function AccountFull({ isAuthorized, userName, avatar }: AccountFullProps
             />
             <AccountNavigation 
                 type='vertical'
+                showIcons={true}
                 isAuthorized={isAuthorized}
             />
         </div>

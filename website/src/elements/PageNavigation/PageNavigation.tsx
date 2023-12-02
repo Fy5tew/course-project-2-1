@@ -5,14 +5,17 @@ const PAGE_LINKS: LinksData = [
     {
         text: 'Главная',
         path: '/',
+        iconPath: '/icons/home.svg',
     },
     {
         text: 'Магазин',
         path: '/store',
+        iconPath: '/icons/store.svg',
     },
     {
         text: 'Библиотека',
         path: '/library',
+        iconPath: '/icons/library.svg',
     },
 ];
 

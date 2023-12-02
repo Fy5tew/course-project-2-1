@@ -10,7 +10,7 @@ export function HeaderDesktop() {
     return (
         <div className={styles.Header}>
             <Logo />
-            <PageNavigation type='horizontal' />
+            <PageNavigation type='horizontal' showIcons={false} />
             <Account type='expandable' />
         </div>
     );
