@@ -33,9 +33,9 @@ export const avatarsReducer = avatarsSlice.reducer;
 export const avatarsActions = {
     ...avatarsSlice.actions,
     getAvatars: (state: RootState) => state.avatars,
-    getAvatar: (state: RootState, action: PayloadAction<string>) => {
+    getAvatar: (avatarName: string) => (state: RootState) => {
         for (const avatar of state.avatars) {
-            if (avatar.name === action.payload) {
+            if (avatar.name === avatarName) {
                 return avatar;
             }
         }
