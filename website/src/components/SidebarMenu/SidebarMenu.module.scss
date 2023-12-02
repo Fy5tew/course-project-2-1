@@ -29,7 +29,7 @@
 
         display: flex;
         flex-direction: column;
-        gap: 2em;
+        gap: 0.5em;
 
         font-size: 1.5em;
 
@@ -39,13 +39,17 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            gap: 1em;
+            gap: 2em;
 
             padding: 8px 16px 8px 1em;
         }
 
+        & > *:nth-child(2) {
+            padding-top: 0;
+        }
+
         & > * {
-            padding: 0 1em;
+            padding: 0.5em 1em;
         }
     }
 }
