@@ -83,7 +83,8 @@ export const userReducer = userSlice.reducer;
 
 export const userActions = {
     ...userSlice.actions,
-    getUser: (state: RootState) => state.user,
+    getState: (state: RootState) => state.user,
+    getUser: (state: RootState) => state.user.user,
     getAuthorized: (state: RootState) => state.user.isAuthorized,
     getName: (state: RootState) => state.user.user.name,
     getAvatar: (state: RootState) => state.user.user.avatar,
