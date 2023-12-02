@@ -9,6 +9,7 @@ import { store } from './features/store';
 import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
 import { LibraryPage } from './pages/LibraryPage';
+import { AccountPage } from './pages/AccountPage/AccountPage';
 import { SigninPage } from './pages/SigninPage';
 import { SignupPage } from './pages/SignupPage/SignupPage';
 
@@ -25,11 +26,30 @@ root.render(
         <BrowserRouter>
           <Routes>
             <Route path='/'>
-              <Route index element={ <IndexPage /> }/>
-              <Route path='store' element={ <StorePage /> } />
-              <Route path='library' element={ <LibraryPage /> } />
-              <Route path='signin' element={ <SigninPage /> } />
-              <Route path='signup' element={ <SignupPage /> } />
+              <Route 
+                index 
+                element={ <IndexPage /> }
+              />
+              <Route 
+                path='store' 
+                element={ <StorePage /> } 
+              />
+              <Route 
+                path='library' 
+                element={ <LibraryPage /> } 
+              />
+              <Route 
+                path='account' 
+                element={ <AccountPage /> } 
+              />
+              <Route 
+                path='signin' 
+                element={ <SigninPage /> } 
+              />
+              <Route 
+                path='signup'
+                element={ <SignupPage /> } 
+              />
             </Route>
           </Routes>
         </BrowserRouter>
