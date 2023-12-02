@@ -9,9 +9,9 @@ import { store } from './features/store';
 import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
 import { LibraryPage } from './pages/LibraryPage';
-import { AccountPage } from './pages/AccountPage/AccountPage';
+import { AccountPage } from './pages/AccountPage';
 import { SigninPage } from './pages/SigninPage';
-import { SignupPage } from './pages/SignupPage/SignupPage';
+import { SignupPage } from './pages/SignupPage';
 
 import './index.scss';
 
