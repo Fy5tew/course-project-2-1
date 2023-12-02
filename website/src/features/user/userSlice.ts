@@ -12,22 +12,34 @@ export type UserRegistration = {
 };
 
 
-export type User = {
+export type UnauthorizedUser = {
     name: string,
     avatar: string,
-    email?: string,
-    password?: string,
+    email: null,
+    password: null;
 };
 
 
-export type UserState = User & {
+export type AuthorizedUser = {
+    name: string,
+    avatar: string,
+    email: string,
+    password: string,
+};
+
+
+export type User = UnauthorizedUser | AuthorizedUser;
+
+
+export type UserState = {
     isAuthorized: boolean,
-};
+    user: User,
+}
 
 
 const initialState: UserState = {
-    ...guest,
     isAuthorized: false,
+    user: guest,
 };
 
 
@@ -37,26 +49,30 @@ export const userSlice = createSlice({
     reducers: {
         authorize: (state, action: PayloadAction<UserRegistration>) => {
             state.isAuthorized = true;
-            state.avatar = 'default';
-            state.name = action.payload.name;
-            state.email = action.payload.email;
-            state.password = action.payload.password;
+            state.user = {
+                ...action.payload,
+                avatar: 'default',
+            };
+        },
+        unauthorize: (state) => {
+            state.isAuthorized = false;
+            state.user = guest;
         },
         setName: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
-            state.name = action.payload;
+            state.user.name = action.payload;
         },
         setAvatar: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
-            state.avatar = action.payload;
+            state.user.avatar = action.payload;
         },
         setEmail: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
-            state.email = action.payload;
+            state.user.email = action.payload;
         },
         setPassword: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
-            state.password = action.payload;
+            state.user.password = action.payload;
         },
     }
 });
@@ -69,8 +85,8 @@ export const userActions = {
     ...userSlice.actions,
     getUser: (state: RootState) => state.user,
     getAuthorized: (state: RootState) => state.user.isAuthorized,
-    getName: (state: RootState) => state.user.name,
-    getAvatar: (state: RootState) => state.user.avatar,
-    getEmail: (state: RootState) => state.user.email,
-    getPassword: (state: RootState) => state.user.password,
+    getName: (state: RootState) => state.user.user.name,
+    getAvatar: (state: RootState) => state.user.user.avatar,
+    getEmail: (state: RootState) => state.user.user.email,
+    getPassword: (state: RootState) => state.user.user.password,
 };
