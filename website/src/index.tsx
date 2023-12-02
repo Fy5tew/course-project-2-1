@@ -10,9 +10,9 @@ import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
 import { LibraryPage } from './pages/LibraryPage';
 import { AccountPage } from './pages/AccountPage';
-import { SigninPage } from './pages/SigninPage';
-import { SignupPage } from './pages/SignupPage';
-import { SignoutPage } from './pages/SignoutPage';
+import { SignInPage } from './pages/SignInPage';
+import { SignUpPage } from './pages/SignUpPage';
+import { SignOutPage } from './pages/SignOutPage';
 
 import './index.scss';
 
@@ -45,15 +45,15 @@ root.render(
               />
               <Route 
                 path='signin' 
-                element={ <SigninPage /> } 
+                element={ <SignInPage /> } 
               />
               <Route 
                 path='signup'
-                element={ <SignupPage /> } 
+                element={ <SignUpPage /> } 
               />
               <Route
                 path='signout'
-                element={ <SignoutPage /> }
+                element={ <SignOutPage /> }
               />
             </Route>
           </Routes>

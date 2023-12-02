@@ -10,7 +10,7 @@ import { userActions } from '../../features/user/userSlice';
 import { PageLayout } from '../../components/PageLayout';
 
 
-export function SignoutPage() {
+export function SignOutPage() {
     useTitle('Выход');
 
     const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export function SignoutPage() {
                 Вы вышли из аккаунта.
             </p>
             <p>
-                Через {countdown} секунд вы будете перенаправлены на главную страницу...
+                Вы будете перенаправлены на главную страницу через {countdown}...
             </p>
         </PageLayout>
     );

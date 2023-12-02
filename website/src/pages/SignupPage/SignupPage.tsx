@@ -1,12 +1,12 @@
-import { useTitle } from "../../hooks/useTitle";
+import { useTitle } from '../../hooks/useTitle';
 
-import { PageLayout } from "../../components/PageLayout";
+import { PageLayout } from '../../components/PageLayout';
 
 
-export function SignupPage() {
+export function SignUpPage() {
     useTitle('Регистрация');
 
-    return (
+    return(
         <PageLayout>
             SIGNUP PAGE
         </PageLayout>

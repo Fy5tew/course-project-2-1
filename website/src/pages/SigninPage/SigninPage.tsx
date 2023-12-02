@@ -3,7 +3,7 @@ import { useTitle } from "../../hooks/useTitle";
 import { PageLayout } from "../../components/PageLayout";
 
 
-export function SigninPage() {
+export function SignInPage() {
     useTitle('Вход');
 
     return (
