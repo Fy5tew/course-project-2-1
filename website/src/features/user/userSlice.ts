@@ -28,6 +28,9 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        authorize: (state) => {
+            state.isAuthorized = true;
+        },
         setName: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
             state.name = action.payload;
