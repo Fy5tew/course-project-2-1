@@ -1,46 +1,35 @@
-import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { useToggle } from 'usehooks-ts';
 
 import { userActions } from '../../features/user/userSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
-import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-
-import { AccountNavigation } from '../../elements/AccountNavigation';
-
-import { AccountInfo } from '../../elements/AccountInfo';
-
-import styles from './Account.module.scss';
+import { AccountFull } from './AccountFull';
+import { AccountExpandable } from './AccountExpandable';
 
 
-export function Account() {
+export type AccountProps = {
+    type: 'full' | 'expandable',
+};
+
+
+export function Account({ type }: AccountProps) {
     const userName = useSelector(userActions.getName);
     const avatarName = useSelector(userActions.getAvatar);
     const avatar = useSelector(avatarsActions.getAvatar(avatarName));
-
-    const accountRef = useRef(null);
-    const [ isExpanded, toggleExpanded, setExpanded ] = useToggle(false);
-
-    const clickHandler = () => {
-        toggleExpanded();
-    };
-
-    useOnClickOutside(accountRef, () => setExpanded(false))
     
+    if (type === 'full') {
+        return (
+            <AccountFull
+                userName={userName}
+                avatar={avatar}
+            />
+        );
+    }
+
     return (
-        <div className={styles.Account} onClick={clickHandler} ref={accountRef}>
-            <div className={styles.BasePart}>
-                <AccountInfo
-                    userName={userName}
-                    avatar={avatar}
-                />
-            </div>
-            <div className={styles.ExpandablePart} data-expanded={isExpanded}>
-                <AccountNavigation 
-                    type='vertical'
-                />
-            </div>
-        </div>
+        <AccountExpandable
+            userName={userName}
+            avatar={avatar}
+        />
     );
 }

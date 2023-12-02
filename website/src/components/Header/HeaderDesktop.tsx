@@ -11,7 +11,7 @@ export function HeaderDesktop() {
         <div className={styles.Header}>
             <Logo />
             <PageNavigation type='horizontal' />
-            <Account />
+            <Account type='expandable' />
         </div>
     );
 }
