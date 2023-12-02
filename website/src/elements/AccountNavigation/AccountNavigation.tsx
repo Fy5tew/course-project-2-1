@@ -3,12 +3,12 @@ import { Navigation, NavigationProps, LinksData } from "../Navigation";
 
 const UNAUTHORIZED_PAGES_LINKS: LinksData = [
     {
-        text: 'Вход',
+        text: 'Войти',
         path: '/signin',
         iconPath: '/icons/signin.svg',
     },
     {
-        text: 'Регистрация',
+        text: 'Создать аккаунт',
         path: '/signup',
         iconPath: '/icons/signup.svg',
     },
