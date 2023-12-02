@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { titleReducer } from './title/titleSlice';
 import { menuReducer } from './menu/menuSlice';
 import { avatarsReducer } from './avatars/avatarsSlice';
+import { userReducer } from './user/userSlice';
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
         menu: menuReducer,
         title: titleReducer,
         avatars: avatarsReducer,
+        user: userReducer,
     }
 });
 
