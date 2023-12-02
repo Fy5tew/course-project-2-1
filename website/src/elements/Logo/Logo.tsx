@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Logo.module.scss';
 
 
@@ -9,11 +11,13 @@ export type LogoProps = {
 export function Logo({ short }: LogoProps) {
     return (
         <div className={styles.Logo}>
-            <img 
-                src="/logo/logo.svg" 
-                alt="" 
-            />
-            {!short && <span>F5STORE</span>}
+            <Link to='/'>
+                <img 
+                    src='/logo/logo.svg' 
+                    alt=''
+                />
+                {!short && <span>F5STORE</span>}
+            </Link>
         </div>
     )
 }
