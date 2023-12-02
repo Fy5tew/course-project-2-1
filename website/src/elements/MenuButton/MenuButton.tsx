@@ -14,7 +14,7 @@ export function MenuButton() {
     const imageProps = {
         className: isOpened ? styles.ImageClosed : styles.ImageOpened,
         src: isOpened ? '/icons/menu-open.svg' : '/icons/menu-close.svg',
-        alt: isOpened ? '☰' : '☓',
+        alt: isOpened ? '☓' : '☰',
     };
 
     return (
