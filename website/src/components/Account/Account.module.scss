@@ -1,0 +1,25 @@
+.Account {
+    .BasePart {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .ExpandablePart {
+        position: absolute;
+        right: 1em;
+
+        margin-top: 0.5em;
+        padding: 1em;
+
+        background-color: #2d2f29;
+        border-radius: 0.5em;
+
+        &[data-expanded="true"] {
+            z-index: 5;
+        }
+
+        &[data-expanded="false"] {
+            z-index: -5;
+        }
+    }
+}
