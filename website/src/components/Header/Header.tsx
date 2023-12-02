@@ -22,7 +22,7 @@ export function Header() {
         }
     }, [dispatch, isMenuOpened, width]);
 
-    if (width < BREAKPOINT_WIDTH) {
+    if (width <= BREAKPOINT_WIDTH) {
         return (
             <HeaderMobile />
         );
