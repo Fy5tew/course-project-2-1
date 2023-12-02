@@ -12,8 +12,8 @@ export type AccountInfoProps = {
 
 export function AccountInfo({ userName, avatar, reverse }: AccountInfoProps) {
     const inner = [
-        <span>{userName}</span>,
-        <img src={avatar.src} alt={avatar.name} />,
+        <span key="username">{userName}</span>,
+        <img key="avatar" src={avatar.src} alt={avatar.name} />,
     ];
 
     return (
