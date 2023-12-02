@@ -15,10 +15,11 @@ export type AccountExpandableProps = {
     isAuthorized: boolean,
     userName: string,
     avatar: Avatar,
+    infoReversed?: boolean,
 };
 
 
-export function AccountExpandable({ isAuthorized, userName, avatar }: AccountExpandableProps) {
+export function AccountExpandable({ isAuthorized, userName, avatar, infoReversed }: AccountExpandableProps) {
     const accountRef = useRef(null);
     const [ isExpanded, toggleExpanded, setExpanded ] = useToggle(false);
 
@@ -34,6 +35,7 @@ export function AccountExpandable({ isAuthorized, userName, avatar }: AccountExp
                 <AccountInfo
                     userName={userName}
                     avatar={avatar}
+                    reverse={infoReversed}
                 />
             </div>
             <div className={styles.ExpandablePart} data-expanded={isExpanded}>

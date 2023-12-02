@@ -9,10 +9,11 @@ import { AccountExpandable } from './AccountExpandable';
 
 export type AccountProps = {
     type: 'full' | 'expandable',
+    infoReversed?: boolean,
 };
 
 
-export function Account({ type }: AccountProps) {
+export function Account({ type, infoReversed }: AccountProps) {
     const isAuthorized = useSelector(userActions.getAuthorized);
     const user = useSelector(userActions.getUser);
     const avatar = useSelector(avatarsActions.getAvatar(user.avatar));
@@ -23,6 +24,7 @@ export function Account({ type }: AccountProps) {
                 isAuthorized={isAuthorized}
                 userName={user.name}
                 avatar={avatar}
+                infoReversed={infoReversed}
             />
         );
     }
@@ -32,6 +34,7 @@ export function Account({ type }: AccountProps) {
             isAuthorized={isAuthorized}
             userName={user.name}
             avatar={avatar}
+            infoReversed={infoReversed}
         />
     );
 }

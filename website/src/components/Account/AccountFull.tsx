@@ -10,15 +10,17 @@ export type AccountFullProps = {
     isAuthorized: boolean,
     userName: string,
     avatar: Avatar,
+    infoReversed?: boolean,
 };
 
 
-export function AccountFull({ isAuthorized, userName, avatar }: AccountFullProps) {
+export function AccountFull({ isAuthorized, userName, avatar, infoReversed }: AccountFullProps) {
     return (
         <div className={`${styles.Account} ${styles.AccountFull}`}>
             <AccountInfo 
                 userName={userName}
                 avatar={avatar}
+                reverse={infoReversed}
             />
             <AccountNavigation 
                 type='vertical'

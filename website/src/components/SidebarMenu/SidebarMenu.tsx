@@ -34,8 +34,14 @@ export function SidebarMenu() {
                     <Logo short={width < BREAKPOINT_WIDTH} />
                     <MenuButton />
                 </div>
-                <Account type='full' />
-                <PageNavigation type='vertical' showIcons={true} />
+                <Account 
+                    type='full' 
+                    infoReversed={true}
+                />
+                <PageNavigation 
+                    type='vertical' 
+                    showIcons={true}
+                />
             </div>
         </div>
     );
