@@ -5,6 +5,13 @@ import { RootState } from '../store';
 import { guest } from './defaultUsers';
 
 
+export type UserRegistration = {
+    name: string,
+    email: string,
+    password: string,
+};
+
+
 export type User = {
     name: string,
     avatar: string,
@@ -28,8 +35,12 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        authorize: (state) => {
+        authorize: (state, action: PayloadAction<UserRegistration>) => {
             state.isAuthorized = true;
+            state.avatar = 'default';
+            state.name = action.payload.name;
+            state.email = action.payload.email;
+            state.password = action.payload.password;
         },
         setName: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
