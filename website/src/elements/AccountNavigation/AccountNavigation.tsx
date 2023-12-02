@@ -17,6 +17,10 @@ const AUTHORIZED_PAGES_LINKS: LinksData = [
         text: 'Мой аккаунт',
         path: '/account',
     },
+    {
+        text: 'Выйти',
+        path: '/signout',
+    },
 ];
 
 

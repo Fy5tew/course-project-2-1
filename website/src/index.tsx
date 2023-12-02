@@ -12,6 +12,7 @@ import { LibraryPage } from './pages/LibraryPage';
 import { AccountPage } from './pages/AccountPage';
 import { SigninPage } from './pages/SigninPage';
 import { SignupPage } from './pages/SignupPage';
+import { SignoutPage } from './pages/SignoutPage';
 
 import './index.scss';
 
@@ -49,6 +50,10 @@ root.render(
               <Route 
                 path='signup'
                 element={ <SignupPage /> } 
+              />
+              <Route
+                path='signout'
+                element={ <SignoutPage /> }
               />
             </Route>
           </Routes>
