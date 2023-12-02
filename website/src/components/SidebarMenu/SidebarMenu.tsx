@@ -8,7 +8,7 @@ import { menuActions } from '../../features/menu/menuSlice';
 import { Logo } from '../../elements/Logo';
 import { MenuButton } from '../../elements/MenuButton';
 import { Account } from '../../elements/Account';
-import { Navigation } from '../../elements/Navigation';
+import { PageNavigation } from '../../elements/PageNavigation';
 
 import styles from './SidebarMenu.module.scss';
 
@@ -34,7 +34,7 @@ export function SidebarMenu() {
                     <MenuButton />
                 </div>
                 <Account />
-                <Navigation type='vertical' />
+                <PageNavigation type='vertical' />
             </div>
         </div>
     );

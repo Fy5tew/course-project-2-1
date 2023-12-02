@@ -1,5 +1,5 @@
 import { Logo } from '../../elements/Logo';
-import { Navigation } from '../../elements/Navigation';
+import { PageNavigation } from '../../elements/PageNavigation';
 import { Account } from '../../elements/Account';
 
 import styles from './Header.module.scss';
@@ -9,7 +9,7 @@ export function HeaderDesktop() {
     return (
         <div className={styles.Header}>
             <Logo />
-            <Navigation type='horizontal' />
+            <PageNavigation type='horizontal' />
             <Account />
         </div>
     );
