@@ -9,6 +9,8 @@ import { store } from './features/store';
 import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
 import { LibraryPage } from './pages/LibraryPage';
+import { SigninPage } from './pages/SigninPage';
+import { SignupPage } from './pages/SignupPage/SignupPage';
 
 import './index.scss';
 
@@ -26,6 +28,8 @@ root.render(
               <Route index element={ <IndexPage /> }/>
               <Route path='store' element={ <StorePage /> } />
               <Route path='library' element={ <LibraryPage /> } />
+              <Route path='signin' element={ <SigninPage /> } />
+              <Route path='signup' element={ <SignupPage /> } />
             </Route>
           </Routes>
         </BrowserRouter>
