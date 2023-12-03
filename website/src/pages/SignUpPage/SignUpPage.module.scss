@@ -1,0 +1,21 @@
+.Title {
+    text-align: center;
+}
+
+.FormWrapper {
+    max-width: 600px;
+    margin: auto;
+}
+
+.HelpText {
+    text-align: center;
+
+    a {
+        color: var(--color-primary);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

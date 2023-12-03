@@ -1,0 +1,36 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+
+    width: 100%;
+
+    label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    input {
+        color: var(--color-text);
+        background-color: #31332c;
+
+        font-size: 1em;
+        font-family: var(--font-primary);
+
+        outline: none;
+        padding: 0.5em;
+        border-radius: 0.5em;
+
+        &[type="submit"] {
+            font-size: 1.2em;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+    }
+
+    .Error {
+        color: #b11b1b;
+        font-size: 0.8em;
+    }
+}

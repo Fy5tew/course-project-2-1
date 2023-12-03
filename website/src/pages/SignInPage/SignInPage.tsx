@@ -1,29 +1,25 @@
-import { useEffectOnce } from "usehooks-ts";
-import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { useTitle } from "../../hooks/useTitle";
 
-import { userActions } from "../../features/user/userSlice";
-
 import { PageLayout } from "../../components/PageLayout";
+import { SignInForm } from "../../components/SignInForm";
+
+import styles from './SignInPage.module.scss';
 
 
 export function SignInPage() {
     useTitle('Вход');
 
-    const dispatch = useDispatch();
-
-    useEffectOnce(() => {
-        dispatch(userActions.authorize({
-            name: 'Fy5tew',
-            email: 'nik@gmail.com',
-            password: 'hjwqvabvepawepaiyg278',
-        }));
-    });
-
     return (
         <PageLayout>
-            SIGNIN PAGE
+            <h1 className={styles.Title}>Вход в аккаунт</h1>
+            <div className={styles.FormWrapper}>
+                <SignInForm />
+            </div>
+            <p className={styles.HelpText}>
+                Ещё нет аккаунта? Зарегистрируйтесь <Link to='/signup'>здесь</Link>!
+            </p>
         </PageLayout>
     );
 }
