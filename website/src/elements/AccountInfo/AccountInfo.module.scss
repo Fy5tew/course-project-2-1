@@ -4,9 +4,19 @@
     align-items: center;
     gap: 0.5em;
 
-    img {
+    .AvatarWrapper {
+        background-color: #686d5d;
+        border-radius: 50%;
+        flex-grow: 0;
         width: 2em;
-        aspect-ratio: 1/1;
+        height: 2em;
+
+        img {
+            width: 2em;
+            aspect-ratio: 1/1;
+            outline: 0.15em solid var(--color-primary);
+            border-radius: 50%;
+        }
     }
 
     span {

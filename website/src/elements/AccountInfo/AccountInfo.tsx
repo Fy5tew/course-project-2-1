@@ -13,7 +13,7 @@ export type AccountInfoProps = {
 export function AccountInfo({ userName, avatar, reverse }: AccountInfoProps) {
     const inner = [
         <span key="username">{userName}</span>,
-        <img key="avatar" src={avatar.src} alt={avatar.name} />,
+        <div className={styles.AvatarWrapper} key="avatar"><img src={avatar.src} alt={avatar.name} /></div>,
     ];
 
     return (

@@ -23,7 +23,7 @@
 html, body {
     margin: 0;
 
-    height: 100dvh;
+    max-height: 100vh;
 
     color: var(--color-text);
     background-color: var(--color-bg);
