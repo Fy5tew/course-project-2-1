@@ -27,6 +27,12 @@
             color: var(--color-primary);
             cursor: pointer;
         }
+
+        &[type="reset"] {
+            font-size: 1.2em;
+            color: red;
+            cursor: pointer;
+        }
     }
 
     .Error {

@@ -1,6 +1,7 @@
 import { useTitle } from "../../hooks/useTitle";
 
 import { PageLayout } from "../../components/PageLayout";
+import { AccountEditForm } from "../../components/AccountEditForm";
 
 
 export function AccountEditPage() {
@@ -8,7 +9,8 @@ export function AccountEditPage() {
 
     return (
         <PageLayout>
-            ACCOUNT EDIT PAGE
+            <h1>Настройка профиля</h1>
+            <AccountEditForm />
         </PageLayout>
     );
 }
