@@ -8,10 +8,10 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { AccountInfo } from '../../elements/AccountInfo';
 import { AccountNavigation } from '../../elements/AccountNavigation';
 
-import styles from './Account.module.scss';
+import styles from './AccountSmall.module.scss';
 
 
-export type AccountExpandableProps = {
+export type AccountSmallExpandableProps = {
     isAuthorized: boolean,
     userName: string,
     avatar: Avatar,
@@ -19,7 +19,7 @@ export type AccountExpandableProps = {
 };
 
 
-export function AccountExpandable({ isAuthorized, userName, avatar, infoReversed }: AccountExpandableProps) {
+export function AccountSmallExpandable({ isAuthorized, userName, avatar, infoReversed }: AccountSmallExpandableProps) {
     const accountRef = useRef(null);
     const [ isExpanded, toggleExpanded, setExpanded ] = useToggle(false);
 
@@ -30,7 +30,7 @@ export function AccountExpandable({ isAuthorized, userName, avatar, infoReversed
     useOnClickOutside(accountRef, () => setExpanded(false))
     
     return (
-        <div className={`${styles.Account} ${styles.AccountExpandable}`} onClick={clickHandler} ref={accountRef}>
+        <div className={`${styles.AccountSmall} ${styles.AccountSmallExpandable}`} onClick={clickHandler} ref={accountRef}>
             <div className={styles.BasePart}>
                 <AccountInfo
                     userName={userName}

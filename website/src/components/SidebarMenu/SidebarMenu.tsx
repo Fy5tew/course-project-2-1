@@ -7,7 +7,7 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 import { menuActions } from '../../features/menu/menuSlice';
 
-import { Account } from '../Account';
+import { AccountSmall } from '../AccountSmall';
 
 import { Logo } from '../../elements/Logo';
 import { MenuButton } from '../../elements/MenuButton';
@@ -53,8 +53,8 @@ export function SidebarMenu() {
                 <MenuButton />
             </div>
             <div className={styles.Content} ref={menuContentRef}>
-                <Account 
-                    type='full' 
+                <AccountSmall 
+                    type='expanded' 
                     infoReversed={true}
                 />
                 <PageNavigation 

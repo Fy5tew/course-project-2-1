@@ -3,10 +3,10 @@ import { Avatar } from '../../features/avatars/avatarsSlice';
 import { AccountInfo } from '../../elements/AccountInfo';
 import { AccountNavigation } from '../../elements/AccountNavigation';
 
-import styles from './Account.module.scss';
+import styles from './AccountSmall.module.scss';
 
 
-export type AccountFullProps = {
+export type AccountSmallExpandedProps = {
     isAuthorized: boolean,
     userName: string,
     avatar: Avatar,
@@ -14,9 +14,9 @@ export type AccountFullProps = {
 };
 
 
-export function AccountFull({ isAuthorized, userName, avatar, infoReversed }: AccountFullProps) {
+export function AccountSmallExpanded({ isAuthorized, userName, avatar, infoReversed }: AccountSmallExpandedProps) {
     return (
-        <div className={`${styles.Account} ${styles.AccountFull}`}>
+        <div className={`${styles.AccountSmall} ${styles.AccountSmallExpanded}`}>
             <AccountInfo 
                 userName={userName}
                 avatar={avatar}

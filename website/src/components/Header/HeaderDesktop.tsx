@@ -1,4 +1,4 @@
-import { Account } from '../Account';
+import { AccountSmall } from '../AccountSmall';
 
 import { Logo } from '../../elements/Logo';
 import { PageNavigation } from '../../elements/PageNavigation';
@@ -11,7 +11,7 @@ export function HeaderDesktop() {
         <div className={styles.Header}>
             <Logo />
             <PageNavigation type='horizontal' showIcons={false} />
-            <Account type='expandable' />
+            <AccountSmall type='expandable' />
         </div>
     );
 }

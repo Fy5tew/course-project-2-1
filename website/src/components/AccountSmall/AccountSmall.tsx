@@ -3,24 +3,24 @@ import { useSelector } from 'react-redux';
 import { userActions } from '../../features/user/userSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
-import { AccountFull } from './AccountFull';
-import { AccountExpandable } from './AccountExpandable';
+import { AccountSmallExpanded } from './AccountSmallExpanded';
+import { AccountSmallExpandable } from './AccountSmallExpandable';
 
 
-export type AccountProps = {
-    type: 'full' | 'expandable',
+export type AccountSmallProps = {
+    type: 'expanded' | 'expandable',
     infoReversed?: boolean,
 };
 
 
-export function Account({ type, infoReversed }: AccountProps) {
+export function AccountSmall({ type, infoReversed }: AccountSmallProps) {
     const isAuthorized = useSelector(userActions.getAuthorized);
     const user = useSelector(userActions.getUser);
     const avatar = useSelector(avatarsActions.getAvatar(user.avatar));
     
-    if (type === 'full') {
+    if (type === 'expanded') {
         return (
-            <AccountFull
+            <AccountSmallExpanded
                 isAuthorized={isAuthorized}
                 userName={user.name}
                 avatar={avatar}
@@ -30,7 +30,7 @@ export function Account({ type, infoReversed }: AccountProps) {
     }
 
     return (
-        <AccountExpandable
+        <AccountSmallExpandable
             isAuthorized={isAuthorized}
             userName={user.name}
             avatar={avatar}

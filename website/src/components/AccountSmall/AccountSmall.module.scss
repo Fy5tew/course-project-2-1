@@ -1,4 +1,4 @@
-.AccountExpandable {
+.AccountSmallExpandable {
     .BasePart {
         cursor: pointer;
         user-select: none;
@@ -25,7 +25,7 @@
     }
 }
 
-.AccountFull {
+.AccountSmallExpanded {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
