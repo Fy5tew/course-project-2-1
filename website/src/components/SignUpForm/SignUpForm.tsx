@@ -84,7 +84,7 @@ export function SignUpForm() {
                 })} type='password' />
                 {errors.passwordRepeat && <span className={styles.Error}>{errors.passwordRepeat.message}</span>}
             </label>
-            <input type='submit' value='Создать аккаунт' />
+            <input type='submit' value='Создать аккаунт' formNoValidate />
         </form>
     );
 }

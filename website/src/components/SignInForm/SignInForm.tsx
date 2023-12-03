@@ -56,7 +56,7 @@ export function SignInForm() {
                 })} type='password' />
                 {errors.password && <span className={styles.Error}>{errors.password.message}</span>}
             </label>
-            <input type='submit' value='Войти' />
+            <input type='submit' value='Войти' formNoValidate />
         </form>
     );
 }
