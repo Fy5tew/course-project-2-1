@@ -10,6 +10,7 @@ import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
 import { LibraryPage } from './pages/LibraryPage';
 import { AccountPage } from './pages/AccountPage';
+import { AccountEditPage } from './pages/AccountEditPage';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
 import { SignOutPage } from './pages/SignOutPage';
@@ -42,6 +43,10 @@ root.render(
               <Route 
                 path='account' 
                 element={ <AccountPage /> } 
+              />
+              <Route 
+                path='account/edit' 
+                element={ <AccountEditPage /> } 
               />
               <Route 
                 path='signin' 

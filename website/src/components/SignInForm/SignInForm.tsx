@@ -26,7 +26,7 @@ export function SignInForm() {
 
     const submitHandler: SubmitHandler<Inputs> = (data) => {
         dispatch(userActions.authorize({...data, name: 'User'}));
-        navigate('/');
+        navigate('/account');
     };
 
     return (

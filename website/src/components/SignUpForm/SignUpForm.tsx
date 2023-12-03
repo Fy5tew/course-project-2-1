@@ -29,7 +29,7 @@ export function SignUpForm() {
 
     const submitHandler: SubmitHandler<Inputs> = (data) => {
         dispatch(userActions.authorize(data));
-        navigate('/');
+        navigate('/account');
     };
 
     return (

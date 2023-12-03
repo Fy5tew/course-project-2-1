@@ -1,0 +1,61 @@
+.AccountBig {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding-left: 0.3em;
+
+    .AvatarWrapper {
+        background-color: #686d5d;
+        border-radius: 50%;
+
+        .Avatar {
+            width: 8em;
+            aspect-ratio: 1/1;
+            outline: 0.3em solid var(--color-primary);
+            border-radius: 50%;
+        }
+    }
+
+    .Info {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        img {
+            width: 1.5em;
+            aspect-ratio: 1/1;
+        }
+
+        .Name {
+            font-size: 2.5em;
+            color: var(--color-primary);
+        }
+
+        .Email {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5em;
+            font-size: 0.9em;
+        }
+
+        .EditLink {
+            display: flex;
+            flex-direction: row;
+            align-items: end;
+            gap: 0.5em;
+            font-size: 1em;
+
+            a {
+                color: var(--color-primary);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
