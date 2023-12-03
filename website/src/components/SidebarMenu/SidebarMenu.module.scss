@@ -23,7 +23,7 @@
         right: 0;
 
         width: 75%;
-        height: 100%;
+        height: 100dvh;
 
         background-color: #2d2f29;
 
@@ -52,4 +52,9 @@
             padding: 0.5em 1em;
         }
     }
+}
+
+
+:is(html, body):has(.SidebarMenu[data-opened="true"]) {
+    overflow: hidden;
 }

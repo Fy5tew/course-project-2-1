@@ -23,7 +23,7 @@
 html, body {
     margin: 0;
 
-    height: 100%;
+    min-height: 100dvh;
 
     color: var(--color-text);
     background-color: var(--color-bg);
@@ -31,8 +31,6 @@ html, body {
     font-size: 16px;
     font-family: var(--font-primary);
     letter-spacing: 0.2ch;
-
-    overflow: hidden;
 }
 
 #root {
