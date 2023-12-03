@@ -8,7 +8,26 @@ export function IndexPage() {
     
     return (
         <PageLayout>
-            INDEX PAGE
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
+            <h1>INDEX PAGE</h1>
         </PageLayout>
     );
 }

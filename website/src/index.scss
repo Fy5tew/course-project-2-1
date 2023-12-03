@@ -23,7 +23,7 @@
 html, body {
     margin: 0;
 
-    min-height: 100dvh;
+    height: 100dvh;
 
     color: var(--color-text);
     background-color: var(--color-bg);
@@ -35,4 +35,23 @@ html, body {
 
 #root {
     height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-secondary);
+    border-radius: 20px;
+    border: 7.5px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
 }

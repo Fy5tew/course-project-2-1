@@ -6,20 +6,22 @@
 
     .ExpandablePart {
         position: absolute;
+        top: 3em;
         right: 1em;
 
-        margin-top: 0.5em;
         padding: 1em;
 
         background-color: #2d2f29;
         border-radius: 0.5em;
 
+        transition: all 0.2s cubic-bezier(.17,.67,1,1.33);
+
         &[data-expanded="true"] {
-            z-index: 5;
         }
 
         &[data-expanded="false"] {
-            z-index: -5;
+            top: -20%
+            // right: -100%;
         }
     }
 }

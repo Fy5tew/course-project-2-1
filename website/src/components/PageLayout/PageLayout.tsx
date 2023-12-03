@@ -16,10 +16,12 @@ export function PageLayout({ children } : PageLayoutProps) {
     return (
         <div className={styles.PageLayout}>
             <Header />
-            <div className={styles.PageContent}>
-                { children }
+            <div className={styles.PageContainer}>
+                <div className={styles.PageContent}>
+                    { children }
+                </div>
+                <Footer />
             </div>
-            <Footer />
             <SidebarMenu />
         </div>
     );
