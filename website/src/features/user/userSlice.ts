@@ -60,7 +60,7 @@ export const userSlice = createSlice({
         },
         setName: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
-            state.user.name = action.payload;
+            state.user.name = action.payload.slice(0, 15);
         },
         setAvatar: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;

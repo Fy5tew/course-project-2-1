@@ -41,6 +41,12 @@ export function SignUpForm() {
                         if (!value) {
                             return 'Это обязательное поле';
                         }
+                        if (value.length < 3) {
+                            return 'Допустимая длина: от 3 символов';
+                        }
+                        if (value.length > 15) {
+                            return 'Допустимая длина: 15 символов';
+                        }
                     } 
                 })} />
                 {errors.name && <span className={styles.Error}>{errors.name.message}</span>}
