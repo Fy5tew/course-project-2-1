@@ -49,7 +49,7 @@ export function SidebarMenu() {
     return (
         <div className={styles.SidebarMenu} data-opened={isOpened} ref={menuRef}>
             <div className={styles.Header}>
-                <Logo short={width < BREAKPOINT_WIDTH} />
+                <Logo short={width <= BREAKPOINT_WIDTH} />
                 <MenuButton />
             </div>
             <div className={styles.Content} ref={menuContentRef}>
