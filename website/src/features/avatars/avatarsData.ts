@@ -33,6 +33,11 @@ export const avatars: Avatar[] = [
         src: '/images/avatars/panda.png',
     },
     {
+        type: 'none',
+        name: 'cat',
+        src: '/images/avatars/cat.png',
+    },
+    {
         type: 'man',
         name: 'man-black',
         src: '/images/avatars/man-black.png',
@@ -91,6 +96,11 @@ export const avatars: Avatar[] = [
         type: 'man',
         name: 'man-green-black',
         src: '/images/avatars/man-green-black.png',
+    },
+    {
+        type: 'man',
+        name: 'man-green-white',
+        src: '/images/avatars/man-green-white.png',
     },
     {
         type: 'woman',
