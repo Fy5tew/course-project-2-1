@@ -35,6 +35,7 @@ export function SignInForm() {
                 E-mail:
                 <input
                     type='email'
+                    placeholder='Укажите e-mail'
                     {...register('email', {
                         validate: validation.validateEmailInput,
                     })} 
@@ -45,6 +46,7 @@ export function SignInForm() {
                 Пароль:
                 <input 
                     type='password'
+                    placeholder='Введите пароль'
                     {...register('password', {
                         validate: validation.validatePasswordInput,
                     })} 

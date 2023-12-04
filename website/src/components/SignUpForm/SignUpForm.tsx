@@ -37,6 +37,7 @@ export function SignUpForm() {
             <label>
                 Имя:
                 <input 
+                    placeholder='Укажите имя'
                     {...register('name', { 
                         validate: validation.validateNameInput,
                     })} 
@@ -47,6 +48,7 @@ export function SignUpForm() {
                 E-mail:
                 <input
                     type='email'
+                    placeholder='Укажите e-mail'
                     {...register('email', {
                         validate: validation.validateEmailInput,
                     })} 
@@ -57,6 +59,8 @@ export function SignUpForm() {
                 Пароль:
                 <input 
                     type='password'
+                    autoComplete='new-password'
+                    placeholder='Придумайте пароль'
                     {...register('password', {
                         validate: validation.validatePasswordInput,
                     })} 
@@ -67,6 +71,8 @@ export function SignUpForm() {
                 Повторите пароль:
                 <input 
                     type='password'
+                    autoComplete='new-password'
+                    placeholder='Подтвердите пароль'
                     {...register('passwordRepeat', { 
                         validate: (value) => validation.validatePasswordRepeatInput(value, watch('password')),
                     })}

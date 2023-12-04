@@ -112,6 +112,7 @@ export function AccountEditForm() {
                 <label>
                     Имя:
                     <input 
+                        placeholder='Укажите имя'
                         {...register('name', { 
                             validate: validation.validateNameInput,
                         })} 
@@ -122,6 +123,7 @@ export function AccountEditForm() {
                     E-mail:
                     <input
                         type='email'
+                        placeholder='Укажите e-mail'
                         {...register('email', {
                             validate: validation.validateEmailInput,
                         })} 
@@ -135,6 +137,8 @@ export function AccountEditForm() {
                     Текущий пароль
                     <input
                         type='password'
+                        autoComplete='new-password'
+                        placeholder='Введите текущий пароль'
                         {...register('prevPassword', {
                         })} 
                     />
@@ -144,6 +148,8 @@ export function AccountEditForm() {
                     Новый пароль
                     <input
                         type='password'
+                        autoComplete='new-password'
+                        placeholder='Введите новый пароль'
                         {...register('newPassword', {
                             validate: (value) => validation.validatePasswordChangeInput(user.password || '', watch('prevPassword'), value),
                         })}
