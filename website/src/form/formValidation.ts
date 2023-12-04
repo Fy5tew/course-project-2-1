@@ -40,3 +40,22 @@ export function validatePasswordRepeatInput(value: string, password: string) {
         return 'Пароли не совпадают'
     }
 }
+
+
+export function validatePasswordChangeInput(originalPassword: string, prevPassword: string, newPassword: string) {
+    if (!prevPassword && !newPassword) {
+        return;
+    }
+    if (!prevPassword && newPassword) {
+        return 'Не введен старый пароль';
+    }
+    if (prevPassword && !newPassword) {
+        return 'Новый пароль не может быть пустым';
+    }
+    if (prevPassword === newPassword) {
+        return 'Новый пароль не может совпадать со старым';
+    }
+    if (prevPassword !== originalPassword) {
+        return 'Неверный текущий пароль';
+    }
+}
