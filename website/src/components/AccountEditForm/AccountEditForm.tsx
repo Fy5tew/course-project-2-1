@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useEffectOnce } from 'usehooks-ts';
 
-import { validateEmail } from '../../helpers/validateEmail';
-
 import { userActions } from '../../features/user/userSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
-import form from '../../Form.module.scss';
+import * as validation from '../../form/formValidation';
+import { ErrorHint } from '../../form/ErrorHint';
+import form from '../../form/Form.module.scss'
 
 import styles from './AccountEditForm.module.scss';
 
@@ -54,34 +54,22 @@ export function AccountEditForm() {
             <input className={styles.Hidden} {...register('avatar')} />
             <label>
                 Имя:
-                <input {...register('name', {
-                    validate: (value) => {
-                        if (!value) {
-                            return 'Это обязательное поле';
-                        }
-                        if (value.length < 3) {
-                            return 'Допустимая длина: от 3 символов';
-                        }
-                        if (value.length > 15) {
-                            return 'Допустимая длина: 15 символов';
-                        }
-                    },
-                })} />
-                {errors.name && <span className={form.Error}>{errors.name.message}</span>}
+                <input 
+                    {...register('name', { 
+                        validate: validation.validateNameInput,
+                    })} 
+                />
+                <ErrorHint errorField={errors.name} />
             </label>
             <label>
                 E-mail:
-                <input {...register('email', {
-                    validate: (value) => {
-                        if (!value) {
-                            return 'Это обязательное поле';
-                        }
-                        if (!validateEmail(value)) {
-                            return 'Неверный формат e-mail';
-                        }
-                    }
-                })} type='email' />
-                {errors.email && <span className={form.Error}>{errors.email.message}</span>}
+                <input
+                    type='email'
+                    {...register('email', {
+                        validate: validation.validateEmailInput,
+                    })} 
+                />
+                <ErrorHint errorField={errors.email} />
             </label>
             <div className={styles.FormControls}>
                 <input type='submit' value='Сохранить изменения' />
