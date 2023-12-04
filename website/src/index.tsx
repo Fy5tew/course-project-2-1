@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
-import { store } from './features/store';
+import { store, persistor } from './features/store';
 
 import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
@@ -25,6 +26,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <PersistGate persistor={persistor} >
         <BrowserRouter>
           <Routes>
             <Route path='/'>
@@ -63,6 +65,7 @@ root.render(
             </Route>
           </Routes>
         </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
