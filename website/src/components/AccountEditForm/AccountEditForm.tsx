@@ -31,6 +31,7 @@ export function AccountEditForm() {
     } = useForm<Inputs>();
 
     const user = useSelector(userActions.getUser);
+    const avatar = useSelector(avatarsActions.getAvatar(user.avatar));
 
     useEffectOnce(() => {
         setValue('avatar', user.avatar);
@@ -50,31 +51,36 @@ export function AccountEditForm() {
     };
 
     return (
-        <form className={form.Form} onSubmit={handleSubmit(submitHandler)} onReset={resetHandler}>
-            <input className={styles.Hidden} {...register('avatar')} />
-            <label>
-                Имя:
-                <input 
-                    {...register('name', { 
-                        validate: validation.validateNameInput,
-                    })} 
-                />
-                <ErrorHint errorField={errors.name} />
-            </label>
-            <label>
-                E-mail:
-                <input
-                    type='email'
-                    {...register('email', {
-                        validate: validation.validateEmailInput,
-                    })} 
-                />
-                <ErrorHint errorField={errors.email} />
-            </label>
-            <div className={styles.FormControls}>
-                <input type='submit' value='Сохранить изменения' />
-                <input type='reset' value='Отменить' />
+        <div className={styles.AccountEditForm}>
+            <div className={styles.AvatarEditPreview}>
+                <img src={avatar.src} alt='' />
             </div>
-        </form>
+            <form className={form.Form} onSubmit={handleSubmit(submitHandler)} onReset={resetHandler}>
+                <input className={styles.Hidden} {...register('avatar')} />
+                <label>
+                    Имя:
+                    <input 
+                        {...register('name', { 
+                            validate: validation.validateNameInput,
+                        })} 
+                    />
+                    <ErrorHint errorField={errors.name} />
+                </label>
+                <label>
+                    E-mail:
+                    <input
+                        type='email'
+                        {...register('email', {
+                            validate: validation.validateEmailInput,
+                        })} 
+                    />
+                    <ErrorHint errorField={errors.email} />
+                </label>
+                <div className={styles.FormControls}>
+                    <input type='submit' value='Сохранить изменения' />
+                    <input type='reset' value='Отменить' />
+                </div>
+            </form>
+        </div>
     );
 }

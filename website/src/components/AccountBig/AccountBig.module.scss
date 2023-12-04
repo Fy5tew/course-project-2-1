@@ -1,19 +1,20 @@
 .AccountBig {
     display: flex;
     flex-direction: row;
-    align-items: center;
     flex-wrap: wrap;
     gap: 2em;
-    padding-left: 0.3em;
 
     .AvatarWrapper {
         background-color: #686d5d;
         border-radius: 50%;
+        border: 0.15em solid var(--color-primary);
+        max-width: 8em;
+        max-height: 8em;
+        aspect-ratio: 1/1;
 
         .Avatar {
-            width: 8em;
+            width: 100%;
             aspect-ratio: 1/1;
-            outline: 0.3em solid var(--color-primary);
             border-radius: 50%;
         }
     }

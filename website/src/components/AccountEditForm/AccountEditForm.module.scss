@@ -1,11 +1,43 @@
-.FormControls {
+.AccountEditForm {
     display: flex;
     flex-direction: row;
-    justify-content: left;
-    align-items: center;
-    gap: 1em;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3em;
+
+    .AvatarEditPreview {
+        max-width: 14em;
+        max-height: 14em;
+        aspect-ratio: 1/1;
+
+        background-color: #686d5d;
+        border-radius: 50%;
+        flex-grow: 0;
+        border: 0.15em solid var(--color-primary);
+
+        img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+        }
+    }
+
+    form {
+        flex-grow: 1;
+        width: auto;
+    }
+
+    .FormControls {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+    
+    .Hidden {
+        display: none;
+    }
 }
 
-.Hidden {
-    display: none;
-}

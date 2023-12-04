@@ -10,11 +10,11 @@
         flex-grow: 0;
         width: 2em;
         height: 2em;
+        border: 0.1em solid var(--color-primary);
 
         img {
             width: 2em;
             aspect-ratio: 1/1;
-            outline: 0.15em solid var(--color-primary);
             border-radius: 50%;
         }
     }
