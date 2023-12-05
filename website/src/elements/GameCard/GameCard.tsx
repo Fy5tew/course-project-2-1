@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useHover, useToggle } from 'usehooks-ts';
 
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
@@ -20,24 +20,30 @@ export function GameCard({ game }: GameCardProps) {
     const isHovering = useHover(cardRef);
 
     useEffect(() => {
-        setExpanded(isHovering);
+        if (!isHovering) {
+            setExpanded(isHovering);
+        }
     }, [setExpanded, isHovering]);
 
     useOnClickOutside(cardRef, () => {
         setExpanded(false);
     })
 
-    const clickHandler = () => {
+    const cardClickHandler = () => {
         toggleExpanded();
     };
 
+    const expandableClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+        event.stopPropagation();
+    };
+
     return (
-        <div className={styles.GameCard} onClick={clickHandler} ref={cardRef}>
+        <div className={styles.GameCard} onClick={cardClickHandler} ref={cardRef}>
             <img src={game.media.cover} alt='' />
             <div className={styles.Head}>
                 <h3>{game.title}</h3>
             </div>
-            <div className={styles.Expandable} data-expanded={isExpanded}>
+            <div className={styles.Expandable} data-expanded={isExpanded} onClickCapture={expandableClickHandler}>
                 <table className={styles.Info}>
                     <tbody>
                         <tr>
