@@ -65,7 +65,7 @@
             top: 0;
             left: 0;
             padding: 0.5em;
-            font-size: 0.6em;
+            font-size: calc(1em - 0.4vw);
             color: red;
             border: 0.25em solid red;
             border-top-left-radius: $border-radius;
@@ -76,8 +76,8 @@
             position: absolute;
             bottom: 5px;
             right: 0;
-            padding: 0.6em;
-            font-size: 0.6em;
+            padding: 0.5em;
+            font-size: calc(1em - 0.4vw);
             color: green;
             background-color: #6dc849;
             border: 0.25em solid green;

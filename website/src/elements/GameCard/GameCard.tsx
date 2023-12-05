@@ -44,7 +44,7 @@ export function GameCard({ game }: GameCardProps) {
             <div className={styles.Cover}>
                 <img src={game.media.cover} alt='' />
                 <span className={styles.AgeLimit}>{game.ageLimit}</span>
-                <span className={styles.MetacriticScore}>{game.metacriticScore}</span>
+                <span className={styles.MetacriticScore}>Metacritic: {game.metacriticScore}</span>
             </div>
             <div className={styles.Head}>
                 <h3><ExpandIndicator isExpanded={isExpanded} />{game.title}</h3>
