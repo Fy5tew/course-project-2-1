@@ -7,6 +7,7 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 import { AccountInfo } from '../../elements/AccountInfo';
 import { AccountNavigation } from '../../elements/AccountNavigation';
+import { ExpandIndicator } from '../../elements/ExpandIndicator';
 
 import styles from './AccountSmall.module.scss';
 
@@ -32,6 +33,7 @@ export function AccountSmallExpandable({ isAuthorized, userName, avatar, infoRev
     return (
         <div className={`${styles.AccountSmall} ${styles.AccountSmallExpandable}`} onClick={clickHandler} ref={accountRef}>
             <div className={styles.BasePart}>
+                <ExpandIndicator isExpanded={isExpanded} />
                 <AccountInfo
                     userName={userName}
                     avatar={avatar}

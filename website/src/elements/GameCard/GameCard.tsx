@@ -5,6 +5,8 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 import { Game } from '../../features/games/gamesSlice';
 
+import { ExpandIndicator } from '../ExpandIndicator';
+
 import styles from './GameCard.module.scss';
 import { Link } from 'react-router-dom';
 
@@ -41,7 +43,7 @@ export function GameCard({ game }: GameCardProps) {
         <div className={styles.GameCard} onClick={cardClickHandler} ref={cardRef}>
             <img src={game.media.cover} alt='' />
             <div className={styles.Head}>
-                <h3>{game.title}</h3>
+                <h3><ExpandIndicator isExpanded={isExpanded} />{game.title}</h3>
             </div>
             <div className={styles.Expandable} data-expanded={isExpanded} onClickCapture={expandableClickHandler}>
                 <table className={styles.Info}>
@@ -56,7 +58,7 @@ export function GameCard({ game }: GameCardProps) {
                         </tr>
                     </tbody>
                 </table>
-                <Link to={`/game/${game.id}`}>Перейти к игре {'>'}</Link>
+                <Link to={`/game/${game.id}`}>Перейти к игре <img src='/icons/chevron-forward.svg' alt='' /></Link>
             </div>
         </div>
     );
