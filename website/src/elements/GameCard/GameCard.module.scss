@@ -27,7 +27,7 @@
         box-shadow: $hover-box-shadow-top;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        z-index: 10;
+        z-index: 1;
     }
     
     & > img {
@@ -78,7 +78,7 @@
 
         &[data-expanded="false"] {
             visibility: hidden;
-            z-index: -10;
+            z-index: -1;
         }
 
         a {
