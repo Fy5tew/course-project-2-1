@@ -41,7 +41,11 @@ export function GameCard({ game }: GameCardProps) {
 
     return (
         <div className={styles.GameCard} onClick={cardClickHandler} ref={cardRef}>
-            <img src={game.media.cover} alt='' />
+            <div className={styles.Cover}>
+                <img src={game.media.cover} alt='' />
+                <span className={styles.AgeLimit}>{game.ageLimit}</span>
+                <span className={styles.MetacriticScore}>{game.metacriticScore}</span>
+            </div>
             <div className={styles.Head}>
                 <h3><ExpandIndicator isExpanded={isExpanded} />{game.title}</h3>
             </div>
