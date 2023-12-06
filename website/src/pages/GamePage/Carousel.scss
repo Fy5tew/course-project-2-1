@@ -21,4 +21,13 @@
             border-color: var(--color-primary);
         }
     }
+
+    .thumbs-wrapper {
+        margin-left: 0;
+        margin-right: 0;
+        
+        .thumbs {
+            padding-left: 0;
+        }
+    }
 }
