@@ -22,6 +22,9 @@
         padding: 0.5em;
         border-radius: 0.5em;
 
+        border-color: buttonborder;
+        border-image: initial;
+
         &[type="submit"] {
             font-size: 1.2em;
             color: var(--color-primary);
