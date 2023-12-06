@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import styles from './Navigation.module.scss';
 
@@ -31,7 +31,12 @@ export function Navigation({ type, showIcons, data }: NavigationProps) {
                 {data.map((link) => (
                     <li key={link.path}>
                         {showIcons && link.iconPath && <img src={link.iconPath} alt='' />}
-                        <Link to={link.path}>{link.text}</Link>
+                        <NavLink 
+                            to={link.path}
+                            className={({isActive}) => isActive ? styles.Active : ''}
+                        >
+                            {link.text}
+                        </NavLink>
                     </li>
                 ))}
             </ul>

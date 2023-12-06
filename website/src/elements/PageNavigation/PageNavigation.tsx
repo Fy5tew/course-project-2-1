@@ -4,7 +4,7 @@ import { Navigation, NavigationProps, LinksData } from "../Navigation";
 const PAGE_LINKS: LinksData = [
     {
         text: 'Главная',
-        path: '/',
+        path: '/home',
         iconPath: '/icons/home.svg',
     },
     {
