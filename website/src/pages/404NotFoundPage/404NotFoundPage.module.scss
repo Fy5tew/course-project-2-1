@@ -1,0 +1,29 @@
+.NotFoundPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: max(5em, 10vw);
+        color: var(--color-primary);
+        margin: 0.2em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    p {
+        max-width: 500px;
+        text-align: center;
+        text-wrap: wrap;
+
+        span {
+            color: var(--color-secondary);
+        }
+    }
+}

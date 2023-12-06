@@ -10,12 +10,14 @@ import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
 import { SignOutPage } from './pages/SignOutPage';
 
+import { NotFoundPage } from './pages/404NotFoundPage';
+
 
 export function AppRouter() {
     return (
         <Routes>
-            <Route 
-                path='/' 
+            <Route
+                index
                 element={ <Navigate replace to='/home' /> }
             />
             <Route 
@@ -57,6 +59,10 @@ export function AppRouter() {
             <Route 
                 path='signout' 
                 element={ <SignOutPage /> } 
+            />
+            <Route 
+                path='*'
+                element={ <NotFoundPage /> }
             />
         </Routes>
     );
