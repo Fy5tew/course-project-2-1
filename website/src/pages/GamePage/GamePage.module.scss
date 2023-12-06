@@ -135,4 +135,18 @@
             text-indent: 1em;
         }
     }
+
+    .Screenshots {
+        .Carousel {
+            user-select: none;
+
+            li[role="button"] {
+                border-radius: 0.5em;
+            }
+
+            li:not([role="button"]) img {
+                border-radius: 1em;
+            }
+        }
+    }
 }

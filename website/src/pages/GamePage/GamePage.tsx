@@ -1,5 +1,9 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { useTitle } from '../../hooks/useTitle';
 
@@ -21,6 +25,7 @@ declare module 'react' {
 export function GamePage() {
     const { gameId } = useParams();
     const game = useSelector(gamesActions.getGameById(gameId as string));
+    const currentSliderIndex = useState(0);
 
     useTitle(game?.title);
 
@@ -76,6 +81,18 @@ export function GamePage() {
                 <div className={styles.Description}>
                     <h2>Об игре</h2>
                     <p>{game.description}</p>
+                </div>
+                <div className={styles.Screenshots}>
+                    <h2>Изображения из игры</h2>
+                    <Carousel 
+                        className={styles.Carousel} 
+                        showArrows={true}
+                        statusFormatter={(current, total) => `${current}/${total}`}
+                    >
+                        {game.media.screenshots.map(screenshot => (
+                            <img src={screenshot} alt='' />
+                        ))}
+                    </Carousel>
                 </div>
             </div>
         </PageLayout>
