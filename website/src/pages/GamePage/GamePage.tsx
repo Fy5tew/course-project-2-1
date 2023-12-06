@@ -134,6 +134,7 @@ export function GamePage() {
                         showArrows={true}
                         statusFormatter={(current, total) => `${current}/${total}`}
                         infiniteLoop={true}
+                        swipeable={false}
                         selectedItem={currentSliderIndex}
                         onClickItem={() => toggleFullScreenSlider()}
                         onChange={index => setCurrentSliderIndex(index)}
@@ -152,6 +153,7 @@ export function GamePage() {
                         showThumbs={false}
                         dynamicHeight={true}
                         infiniteLoop={true}
+                        swipeable={true}
                         statusFormatter={(current, total) => `${current}/${total}`}
                         selectedItem={currentSliderIndex}
                         onClickItem={() => toggleFullScreenSlider()}
