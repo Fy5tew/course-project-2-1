@@ -80,6 +80,10 @@
                 flex-shrink: 1;
                 width: 100%;
 
+                @media (max-width: 426px) {
+                    align-items: flex-start;
+                }
+
 
                 table {
                     border-spacing: 0 0.5em;
