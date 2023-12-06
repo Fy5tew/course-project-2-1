@@ -134,6 +134,115 @@
         }
     }
 
+    .Controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1em;
+
+        padding: 1.5em 0;
+
+        & > button {
+            min-width: fit-content;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 1ch;
+
+            cursor: pointer;
+            padding: 0.5em;
+            border-radius: 0.5em;
+            border-width: 0.15em;
+
+            font-size: 1.1em;
+            font-family: var(--font-primary);
+
+            background-color: transparent;
+
+            transition: all 0.2s ease-in-out;
+
+            img {
+                width: 1.5em;
+                aspect-ratio: 1/1;
+            }
+
+            span {
+                text-align: left;
+            }
+        }
+
+        .BuyButton {
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+
+            &:hover {
+                color: white;
+                background-color: var(--color-primary);
+
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+
+        .AddCartButton {
+            color: #009bce;
+            border-color: #009bce;
+
+            &:hover {
+                color: white;
+                background-color: #009bce;
+
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+
+        .AddWishListButton {
+            color:  white;
+            border-color: white;
+
+            &:hover {
+                color: black;
+                background-color: white;
+
+                img {
+                    filter: brightness(1) invert(1);
+                }
+            }
+        }
+    }
+
+    h3 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2ch;
+
+        img {
+            width: 2em;
+            aspect-ratio: 1/1;
+        }
+
+        span {
+            hyphens: auto;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+        
+            &:hover,
+            &:active {
+                text-decoration: underline;
+            }
+        }
+    }
+
     .Description {
         p {
             text-indent: 5ch;

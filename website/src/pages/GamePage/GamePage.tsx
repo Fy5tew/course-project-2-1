@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useToggle } from 'usehooks-ts';
 
 import { Carousel } from 'react-responsive-carousel';
@@ -10,6 +10,7 @@ import { useTitle } from '../../hooks/useTitle';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 import { gamesActions } from '../../features/games/gamesSlice';
+import { userActions } from '../../features/user/userSlice';
 
 import { PageLayout } from '../../components/PageLayout';
 import { NotFoundPage } from '../404NotFoundPage';
@@ -28,6 +29,8 @@ declare module 'react' {
 export function GamePage() {
     const { gameId } = useParams();
     const game = useSelector(gamesActions.getGameById(gameId as string));
+    const isAuthorized = useSelector(userActions.getAuthorized);
+    const user = useSelector(userActions.getUser);
     const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
     const [isFullScreenSliderOpened, toggleFullScreenSlider] = useToggle(false);
     const fullScreenSliderRef = useRef(null);
@@ -89,6 +92,37 @@ export function GamePage() {
                         </div>
                     </div>
                 </div>
+                {isAuthorized
+                ? (
+                    <div className={styles.Controls}>
+                        <button
+                            className={styles.BuyButton}
+                        >
+                            <img src='/icons/card.svg' alt='' />
+                            <span>Купить сейчас</span>
+                        </button>
+                        <button
+                            className={styles.AddCartButton}
+                        >
+                            <img src='/icons/bag-add-blue.svg' alt='' />
+                            <span>Добавить в корзину</span>
+                        </button>
+                        <button
+                            className={styles.AddWishListButton}
+                        >
+                            <img src='/icons/add-white.svg' alt='' />
+                            <span>В список желаемого</span>
+                        </button>
+                    </div>
+                )
+                : (
+                    <h3>
+                        <img src='/icons/alert-circle.svg' alt='' />
+                        <span>
+                            <Link to='/signin'>Войдите</Link> или <Link to='/signup'>зарегистрируйтесь</Link>, чтобы иметь возможность купить игру или добавить её в список желаемого
+                        </span>
+                    </h3>
+                )}
                 <div className={styles.Description}>
                     <h2>Об игре</h2>
                     <p>{game.description}</p>
