@@ -135,18 +135,30 @@
             text-indent: 1em;
         }
     }
+}
 
-    .Screenshots {
-        .Carousel {
-            user-select: none;
 
-            li[role="button"] {
-                border-radius: 0.5em;
-            }
+.FullScreenSlider {
+    pointer-events:all;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    z-index: 5;
 
-            li:not([role="button"]) img {
-                border-radius: 1em;
-            }
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+
+    &[data-opened="false"] {
+        display: none;
+    }
+
+    .Carousel {
+        width: 80vw;
     }
 }

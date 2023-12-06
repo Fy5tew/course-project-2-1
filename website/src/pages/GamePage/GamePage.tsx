@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useToggle } from 'usehooks-ts';
 
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { useTitle } from '../../hooks/useTitle';
+import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 import { gamesActions } from '../../features/games/gamesSlice';
 
@@ -13,6 +15,7 @@ import { PageLayout } from '../../components/PageLayout';
 import { NotFoundPage } from '../404NotFoundPage';
 
 import styles from './GamePage.module.scss';
+import './Carousel.scss';
 
 
 declare module 'react' {
@@ -25,9 +28,17 @@ declare module 'react' {
 export function GamePage() {
     const { gameId } = useParams();
     const game = useSelector(gamesActions.getGameById(gameId as string));
-    const currentSliderIndex = useState(0);
+    const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
+    const [isFullScreenSliderOpened, toggleFullScreenSlider] = useToggle(false);
+    const fullScreenSliderRef = useRef(null);
 
     useTitle(game?.title);
+
+    useOnClickOutside(fullScreenSliderRef, () => {
+        if (isFullScreenSliderOpened) {
+            toggleFullScreenSlider();
+        }
+    });
 
     if (!game) {
         return (
@@ -88,9 +99,33 @@ export function GamePage() {
                         className={styles.Carousel} 
                         showArrows={true}
                         statusFormatter={(current, total) => `${current}/${total}`}
+                        infiniteLoop={true}
+                        selectedItem={currentSliderIndex}
+                        onClickItem={() => toggleFullScreenSlider()}
+                        onChange={index => setCurrentSliderIndex(index)}
                     >
                         {game.media.screenshots.map(screenshot => (
-                            <img src={screenshot} alt='' />
+                            <img src={screenshot} alt='' key={screenshot} />
+                        ))}
+                    </Carousel>
+                </div>
+            </div>
+            <div className={styles.FullScreenSlider} data-opened={isFullScreenSliderOpened}>
+                <div className={styles.Wrapper} ref={fullScreenSliderRef}>
+                    <Carousel 
+                        className={styles.Carousel} 
+                        showArrows={true}
+                        showThumbs={false}
+                        dynamicHeight={true}
+                        infiniteLoop={true}
+                        statusFormatter={(current, total) => `${current}/${total}`}
+                        selectedItem={currentSliderIndex}
+                        onClickItem={() => toggleFullScreenSlider()}
+                        onChange={index => setCurrentSliderIndex(index)}
+                        
+                    >
+                        {game.media.screenshots.map(screenshot => (
+                            <img src={screenshot} alt='' key={screenshot} />
                         ))}
                     </Carousel>
                 </div>
