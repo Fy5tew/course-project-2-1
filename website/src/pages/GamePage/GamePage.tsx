@@ -65,26 +65,32 @@ export function GamePage() {
                                 <tbody>
                                     <tr>
                                         <th>Дата выхода</th>
+                                        <td data-fake></td>
                                         <td>{game.releaseDate}</td>
                                     </tr>
                                     <tr>
                                         <th>Жанр</th>
+                                        <td data-fake></td>
                                         <td>{game.genres.join(', ')}</td>
                                     </tr>
                                     <tr>
                                         <th>Возрастной рейтинг</th>
+                                        <td data-fake></td>
                                         <td>{game.ageLimit || 'Нет'}</td>
                                     </tr>
                                     <tr>
                                         <th>Оценка на Metacritic</th>
+                                        <td data-fake></td>
                                         <td>{game.metacriticScore}</td>
                                     </tr>
                                     <tr>
                                         <th>Разработчик</th>
+                                        <td data-fake></td>
                                         <td>{game.developers.join(', ')}</td>
                                     </tr>
                                     <tr>
                                         <th>Издатель</th>
+                                        <td data-fake></td>
                                         <td>{game.publishers.join(', ')}</td>
                                     </tr>
                                 </tbody>

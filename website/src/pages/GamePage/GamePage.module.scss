@@ -87,11 +87,16 @@
 
                 table {
                     border-spacing: 0 0.5em;
-                    max-width: 320px;
+                    width: 100%;
+                    min-width: 370px;
+                    max-width: 500px;
                     font-size: 1.2em;
 
                     @media (max-width: 768px) {
-                        max-width: 550px;
+
+                        td[data-fake] {
+                            //min-width: 3em;
+                        }
                     }
 
                     @media (max-width: 426px) {
@@ -116,9 +121,13 @@
                         text-align: right;
                     }
                     
-                    th, td {
-                        width: fit-content;
-                        padding: 0.2em;
+                    th, td:not([data-fake]) {
+                        max-width: 80px;
+                        padding: 0.3em;
+                    }
+
+                    td[data-fake] {
+                        min-width: 1em;
                     }
 
                     tr {
