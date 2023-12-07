@@ -2,8 +2,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { IndexPage } from './pages/IndexPage';
 import { StorePage } from './pages/StorePage';
-import { LibraryPage } from './pages/LibraryPage';
 import { GamePage } from './pages/GamePage';
+import { LibraryPage } from './pages/LibraryPage';
+import { CartPage } from './pages/CartPage';
 import { AccountPage } from './pages/AccountPage';
 import { AccountEditPage } from './pages/AccountEditPage';
 import { SignInPage } from './pages/SignInPage';
@@ -31,6 +32,10 @@ export function AppRouter() {
             <Route 
                 path='library' 
                 element={ <LibraryPage /> } 
+            />
+            <Route
+                path='cart'
+                element={ <CartPage /> }
             />
             <Route 
                 path='game'
