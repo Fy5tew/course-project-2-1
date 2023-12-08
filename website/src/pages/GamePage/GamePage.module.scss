@@ -157,7 +157,6 @@
         padding: 1.5em 0;
 
         & > button {
-            //min-width: fit-content;
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -187,12 +186,14 @@
         }
 
         .BuyButton {
-            color: var(--color-primary);
-            border-color: var(--color-primary);
+            $color: var(--color-primary);
+
+            color: $color;
+            border-color: $color;
 
             &:hover {
                 color: white;
-                background-color: var(--color-primary);
+                background-color: $color;
 
                 img {
                     filter: brightness(0) invert(1);

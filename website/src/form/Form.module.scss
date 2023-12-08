@@ -26,15 +26,45 @@
         border-image: initial;
 
         &[type="submit"] {
+            $color: var(--color-primary);
+
             font-size: 1.2em;
-            color: var(--color-primary);
             cursor: pointer;
+
+            transition: all 0.2s ease-in-out;
+
+            color: $color;
+            border-color: $color;
+
+            &:hover {
+                color: white;
+                background-color: $color;
+
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
         }
 
         &[type="reset"] {
+            $color: #ff4242;
+
             font-size: 1.2em;
-            color: red;
             cursor: pointer;
+
+            transition: all 0.2s ease-in-out;
+
+            color: $color;
+            border-color: $color;
+
+            &:hover {
+                color: white;
+                background-color: $color;
+
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
         }
     }
 
