@@ -6,7 +6,7 @@ import { useToggle, useEffectOnce } from 'usehooks-ts';
 
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
-import { userActions } from '../../features/auth/authSlice';
+import { authActions } from '../../features/auth/authSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
 import * as validation from '../../form/formValidation';
@@ -38,7 +38,7 @@ export function AccountEditForm() {
     } = useForm<Inputs>();
 
     const avatars = useSelector(avatarsActions.getAvatars);
-    const user = useSelector(userActions.getUser);
+    const user = useSelector(authActions.getUser);
     const avatar = useSelector(avatarsActions.getAvatar(getValues('avatar') || user.avatar));
 
     const [
@@ -59,11 +59,11 @@ export function AccountEditForm() {
     });
 
     const submitHandler: SubmitHandler<Inputs> = (data) => {
-        dispatch(userActions.setAvatar(data.avatar));
-        dispatch(userActions.setName(data.name));
-        dispatch(userActions.setEmail(data.email));
+        dispatch(authActions.setAvatar(data.avatar));
+        dispatch(authActions.setName(data.name));
+        dispatch(authActions.setEmail(data.email));
         if (data.newPassword) {
-            dispatch(userActions.setPassword(data.newPassword));
+            dispatch(authActions.setPassword(data.newPassword));
         }
         navigate(-1);
     };

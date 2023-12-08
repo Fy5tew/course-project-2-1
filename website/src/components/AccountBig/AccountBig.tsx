@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { userActions } from '../../features/auth/authSlice';
+import { authActions } from '../../features/auth/authSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
 import styles from './AccountBig.module.scss';
 
 
 export function AccountBig() {
-    const user = useSelector(userActions.getUser);
+    const user = useSelector(authActions.getUser);
     const avatar = useSelector(avatarsActions.getAvatar(user.avatar));
 
     return (

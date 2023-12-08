@@ -100,7 +100,7 @@ export const authSlice = createSlice({
 export const authReducer = authSlice.reducer;
 
 
-export const userActions = {
+export const authActions = {
     ...authSlice.actions,
     getState: (state: RootState) => state.auth,
     getAuthorized: (state: RootState) => state.auth.isAuthorized,

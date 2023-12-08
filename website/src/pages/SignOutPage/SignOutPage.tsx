@@ -5,7 +5,7 @@ import { useEffectOnce, useCountdown } from 'usehooks-ts';
 
 import { useTitle } from '../../hooks/useTitle';
 
-import { userActions } from '../../features/auth/authSlice';
+import { authActions } from '../../features/auth/authSlice';
 
 import { PageLayout } from '../../components/PageLayout';
 
@@ -21,7 +21,7 @@ export function SignOutPage() {
     });
 
     useEffectOnce(() => {
-        dispatch(userActions.unauthorize());
+        dispatch(authActions.unauthorize());
         startCountdown();
     });
 

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { userActions } from '../../features/auth/authSlice';
+import { authActions } from '../../features/auth/authSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
 import { AccountSmallExpanded } from './AccountSmallExpanded';
@@ -14,8 +14,8 @@ export type AccountSmallProps = {
 
 
 export function AccountSmall({ type, infoReversed }: AccountSmallProps) {
-    const isAuthorized = useSelector(userActions.getAuthorized);
-    const user = useSelector(userActions.getUser);
+    const isAuthorized = useSelector(authActions.getAuthorized);
+    const user = useSelector(authActions.getUser);
     const avatar = useSelector(avatarsActions.getAvatar(user.avatar));
     
     if (type === 'expanded') {

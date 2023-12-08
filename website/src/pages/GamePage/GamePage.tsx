@@ -10,7 +10,7 @@ import { useTitle } from '../../hooks/useTitle';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 import { gamesActions } from '../../features/games/gamesSlice';
-import { userActions } from '../../features/auth/authSlice';
+import { authActions } from '../../features/auth/authSlice';
 
 import { PageLayout } from '../../components/PageLayout';
 import { NotFoundPage } from '../404NotFoundPage';
@@ -29,8 +29,7 @@ declare module 'react' {
 export function GamePage() {
     const { gameId } = useParams();
     const game = useSelector(gamesActions.getGameById(gameId as string));
-    const isAuthorized = useSelector(userActions.getAuthorized);
-    const user = useSelector(userActions.getUser);
+    const isAuthorized = useSelector(authActions.getAuthorized);
     const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
     const [isFullScreenSliderOpened, toggleFullScreenSlider] = useToggle(false);
     const fullScreenSliderRef = useRef(null);
@@ -47,6 +46,42 @@ export function GamePage() {
         return (
             <NotFoundPage />
         );
+    }
+
+    let controls;
+    if (!isAuthorized) {
+        controls = (
+            <h3>
+                <img src='/icons/alert-circle.svg' alt='' />
+                <span>
+                    <Link to='/signin'>Войдите</Link> или <Link to='/signup'>зарегистрируйтесь</Link>, чтобы иметь возможность купить игру или добавить её в список желаемого
+                </span>
+            </h3>
+        )
+    }
+    else {
+        controls = (
+            <div className={styles.Controls}>
+                <button
+                    className={styles.BuyButton}
+                >
+                    <img src='/icons/card.svg' alt='' />
+                    <span>Купить сейчас</span>
+                </button>
+                <button
+                    className={styles.AddCartButton}
+                >
+                    <img src='/icons/bag-add-blue.svg' alt='' />
+                    <span>Добавить в корзину</span>
+                </button>
+                <button
+                    className={styles.AddWishListButton}
+                >
+                    <img src='/icons/add-white.svg' alt='' />
+                    <span>В список желаемого</span>
+                </button>
+            </div>
+        )
     }
 
     return (
@@ -98,37 +133,7 @@ export function GamePage() {
                         </div>
                     </div>
                 </div>
-                {isAuthorized
-                ? (
-                    <div className={styles.Controls}>
-                        <button
-                            className={styles.BuyButton}
-                        >
-                            <img src='/icons/card.svg' alt='' />
-                            <span>Купить сейчас</span>
-                        </button>
-                        <button
-                            className={styles.AddCartButton}
-                        >
-                            <img src='/icons/bag-add-blue.svg' alt='' />
-                            <span>Добавить в корзину</span>
-                        </button>
-                        <button
-                            className={styles.AddWishListButton}
-                        >
-                            <img src='/icons/add-white.svg' alt='' />
-                            <span>В список желаемого</span>
-                        </button>
-                    </div>
-                )
-                : (
-                    <h3>
-                        <img src='/icons/alert-circle.svg' alt='' />
-                        <span>
-                            <Link to='/signin'>Войдите</Link> или <Link to='/signup'>зарегистрируйтесь</Link>, чтобы иметь возможность купить игру или добавить её в список желаемого
-                        </span>
-                    </h3>
-                )}
+                { controls }
                 <div className={styles.Description}>
                     <h2>Об игре</h2>
                     <p>{game.description}</p>

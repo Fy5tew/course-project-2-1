@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { userActions } from '../../features/auth/authSlice';
+import { authActions } from '../../features/auth/authSlice';
 
 import * as validation from '../../form/formValidation';
 import { ErrorHint } from '../../form/ErrorHint';
@@ -28,7 +28,7 @@ export function SignUpForm() {
     } = useForm<Inputs>();
 
     const submitHandler: SubmitHandler<Inputs> = (data) => {
-        dispatch(userActions.authorize(data));
+        dispatch(authActions.authorize(data));
         navigate('/account');
     };
 
