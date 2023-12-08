@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useToggle, useEffectOnce } from 'usehooks-ts';
+import { useSnackbar } from 'notistack';
 
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
@@ -36,6 +37,7 @@ export function AccountEditForm() {
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>();
+    const { enqueueSnackbar } = useSnackbar();
 
     const avatars = useSelector(avatarsActions.getAvatars);
     const user = useSelector(authActions.getUser);
@@ -66,10 +68,16 @@ export function AccountEditForm() {
             dispatch(authActions.setPassword(data.newPassword));
         }
         navigate(-1);
+        enqueueSnackbar<'success'>('Изменения сохранены', {
+            variant: 'success',
+        });
     };
 
     const resetHandler = () => {
         navigate(-1);
+        enqueueSnackbar<'error'>('Изменения отменены', {
+            variant: 'error',
+        });
     };
 
     const avatarPreviewClickHandler = () => {
