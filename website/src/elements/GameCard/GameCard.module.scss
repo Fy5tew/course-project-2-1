@@ -77,11 +77,11 @@
             position: absolute;
             bottom: 4.8px;
             right: 0;
-            padding: 0.5em;
-            font-size: calc(1em - 0.4vw);
-            color: green;
-            background-color: #6dc849;
-            border: 0.25em solid green;
+            padding: 0.6em;
+            font-size: calc(1em - 0.3vw);
+            color: var(--color-primary);
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 0.25em solid var(--color-primary);
             border-top-left-radius: $border-radius;
         }
     }

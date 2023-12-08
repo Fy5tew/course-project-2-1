@@ -47,7 +47,7 @@ export function GameCard({ game, showPrice=false, showAgeLimit=false, showMetacr
             <div className={styles.Cover}>
                 <img src={game.media.cover} alt='' />
                 {showAgeLimit && game.ageLimit && <span className={styles.AgeLimit}>{game.ageLimit}</span>}
-                {showMetacriticScore && game.metacriticScore && <span className={styles.MetacriticScore}>Metacritic: {game.metacriticScore}</span>}
+                {showMetacriticScore && game.metacriticScore && <span className={styles.MetacriticScore}>{game.metacriticScore}</span>}
             </div>
             <div className={styles.Head}>
                 <h3>
