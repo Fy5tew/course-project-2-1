@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useWindowSize } from "usehooks-ts";
 
+import { headerActions } from '../../features/header/headerSlice';
 import { menuActions } from "../../features/menu/menuSlice";
 
 import { HeaderDesktop } from "./HeaderDesktop";
@@ -13,6 +14,7 @@ const BREAKPOINT_WIDTH = 768;
 
 export function Header() {
     const dispatch = useDispatch();
+    const isHeaderVisible = useSelector(headerActions.getVisible);
     const isMenuOpened = useSelector(menuActions.getOpened);
     const { width } = useWindowSize();
 
@@ -24,11 +26,11 @@ export function Header() {
 
     if (width <= BREAKPOINT_WIDTH) {
         return (
-            <HeaderMobile />
+            <HeaderMobile isVisible={isHeaderVisible} />
         );
     }
 
     return (
-        <HeaderDesktop />
+        <HeaderDesktop isVisible={isHeaderVisible} />
     );
 }

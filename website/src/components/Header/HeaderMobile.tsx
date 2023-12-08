@@ -9,11 +9,16 @@ import styles from './Header.module.scss';
 const BREAKPOINT_WIDTH = 290;
 
 
-export function HeaderMobile() {
+export type HeaderMobileProps = {
+    isVisible: boolean,
+}
+
+
+export function HeaderMobile({ isVisible }: HeaderMobileProps) {
     const { width } = useWindowSize();
 
     return (
-        <div className={styles.Header}>
+        <div className={styles.Header} data-visible={isVisible}>
             <Logo short={width < BREAKPOINT_WIDTH} />
             <MenuButton />
         </div>

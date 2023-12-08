@@ -3,7 +3,7 @@
     height: 1em;
     aspect-ratio: 1 / 1;
 
-    transition: all 0.3s linear;
+    transition: rotate 0.3s linear;
 
     &[data-expanded="true"] {
         rotate: 180deg;
