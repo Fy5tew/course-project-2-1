@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useSnackbar } from 'notistack';
 
 import { authActions } from '../../features/auth/authSlice';
 
@@ -23,10 +24,14 @@ export function SignInForm() {
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>();
+    const { enqueueSnackbar } = useSnackbar();
 
     const submitHandler: SubmitHandler<Inputs> = (data) => {
         dispatch(authActions.authorize({...data, name: 'User'}));
         navigate('/account');
+        enqueueSnackbar<'success'>('Вы успешно вошли', {
+            variant: 'success',
+        });
     };
 
     return (

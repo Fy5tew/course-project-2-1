@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { useToggle } from 'usehooks-ts';
+import { useSnackbar } from 'notistack';
 
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -23,6 +24,8 @@ import './Carousel.scss';
 
 export function GamePage() {
     const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
+
     const { gameId } = useParams();
     const isAuthorized = useSelector(authActions.getAuthorized);
     const game = useSelector(gamesActions.getGameById(gameId as string));
@@ -50,23 +53,38 @@ export function GamePage() {
 
     const buyButtonClickHandler = () => {
         dispatch(authActions.addToLibrary(gameId as string));
+        enqueueSnackbar<'success'>(`«${game.title}» добавлена в библиотеку`, {
+            variant: 'success',
+        });
     }
 
     const cartButtonClickHandler = () => {
         if (isInCart) {
             dispatch(authActions.removeFromCart(gameId as string));
+            enqueueSnackbar<'error'>(`«${game.title}» удалена из корзины`, {
+                variant: 'error',
+            });
         }
         else {
             dispatch(authActions.addToCart(gameId as string));
+            enqueueSnackbar<'success'>(`«${game.title}» добавлена в корзину`, {
+                variant: 'success',
+            });
         }
     }
 
     const wishlistButtonClickHandler = () => {
         if (isInWishlist) {
             dispatch(authActions.removeFromWishlist(gameId as string));
+            enqueueSnackbar<'error'>(`«${game.title}» удалена из желаемого`, {
+                variant: 'error',
+            });
         }
         else {
             dispatch(authActions.addToWishlist(gameId as string));
+            enqueueSnackbar<'success'>(`«${game.title}» добавлена в желаемое`, {
+                variant: 'success',
+            });
         }
     }
 

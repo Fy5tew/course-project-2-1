@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffectOnce, useCountdown } from 'usehooks-ts';
+import { useSnackbar } from 'notistack';
 
 import { useTitle } from '../../hooks/useTitle';
 
@@ -19,9 +20,14 @@ export function SignOutPage() {
         countStart: 5,
         intervalMs: 1000,
     });
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffectOnce(() => {
         dispatch(authActions.unauthorize());
+        enqueueSnackbar<'error'>('Вы вышли из аккаунта', {
+            variant: 'error',
+            preventDuplicate: true,
+        });
         startCountdown();
     });
 
