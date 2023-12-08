@@ -13,10 +13,12 @@ import { Link } from 'react-router-dom';
 
 export type GameCardProps = {
     game: Game,
+    showAgeLimit?: boolean,
+    showMetacriticScore?: boolean,
 }
 
 
-export function GameCard({ game }: GameCardProps) {
+export function GameCard({ game, showAgeLimit=false, showMetacriticScore=false }: GameCardProps) {
     const [ isExpanded, toggleExpanded, setExpanded ] = useToggle(false);
     const cardRef = useRef<HTMLDivElement>(null);
     const isHovering = useHover(cardRef);
@@ -43,8 +45,8 @@ export function GameCard({ game }: GameCardProps) {
         <div className={styles.GameCard} onClick={cardClickHandler} ref={cardRef}>
             <div className={styles.Cover}>
                 <img src={game.media.cover} alt='' />
-                {game.ageLimit && <span className={styles.AgeLimit}>{game.ageLimit}</span>}
-                {!!game.metacriticScore && <span className={styles.MetacriticScore}>Metacritic: {game.metacriticScore}</span>}
+                {showAgeLimit && game.ageLimit && <span className={styles.AgeLimit}>{game.ageLimit}</span>}
+                {showMetacriticScore && game.metacriticScore && <span className={styles.MetacriticScore}>Metacritic: {game.metacriticScore}</span>}
             </div>
             <div className={styles.Head}>
                 <h3><ExpandIndicator isExpanded={isExpanded} />{game.title}</h3>

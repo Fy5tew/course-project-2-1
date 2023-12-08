@@ -42,7 +42,7 @@ export function CartPage() {
             <div className={styles.Cart}>
                 <div className={styles.Games}>
                     <h2>Товары в корзине ({cart.length})</h2>
-                    <GameList games={filteredGames} />
+                    <GameList games={filteredGames} showMetacriticScore />
                 </div>
                 <div className={styles.Sidebar}>
                     <h2>Описание заказа</h2>
