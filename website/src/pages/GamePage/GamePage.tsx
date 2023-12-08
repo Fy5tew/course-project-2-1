@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { useToggle } from 'usehooks-ts';
 
@@ -19,17 +19,13 @@ import styles from './GamePage.module.scss';
 import './Carousel.scss';
 
 
-declare module 'react' {
-    interface CSSProperties {
-        [key: `--${string}`]: string | number
-    }
-}
-
-
 export function GamePage() {
+    const dispatch = useDispatch();
     const { gameId } = useParams();
-    const game = useSelector(gamesActions.getGameById(gameId as string));
     const isAuthorized = useSelector(authActions.getAuthorized);
+    const game = useSelector(gamesActions.getGameById(gameId as string));
+    const isInCart = useSelector(authActions.isInCart(gameId as string));
+
     const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
     const [isFullScreenSliderOpened, toggleFullScreenSlider] = useToggle(false);
     const fullScreenSliderRef = useRef(null);
@@ -46,6 +42,15 @@ export function GamePage() {
         return (
             <NotFoundPage />
         );
+    }
+
+    const cartButtonClickHandler = () => {
+        if (isInCart) {
+            dispatch(authActions.removeFromCart(gameId as string));
+        }
+        else {
+            dispatch(authActions.addToCart(gameId as string));
+        }
     }
 
     let controls;
@@ -69,10 +74,17 @@ export function GamePage() {
                     <span>Купить сейчас</span>
                 </button>
                 <button
-                    className={styles.AddCartButton}
+                    className={isInCart ? styles.RemoveCartButton : styles.AddCartButton}
+                    onClick={cartButtonClickHandler}
                 >
-                    <img src='/icons/bag-add-blue.svg' alt='' />
-                    <span>Добавить в корзину</span>
+                    <img 
+                        src={isInCart ? '/icons/bag-remove-red.svg' : '/icons/bag-add-blue.svg'} 
+                        alt='' 
+                    />
+                    {isInCart
+                        ? <span>Убрать из корзины</span>
+                        : <span>Добавить в корзину</span>
+                    }
                 </button>
                 <button
                     className={styles.AddWishListButton}
