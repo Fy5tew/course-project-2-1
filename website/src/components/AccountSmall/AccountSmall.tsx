@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { userActions } from '../../features/user/userSlice';
+import { userActions } from '../../features/auth/authSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
 import { AccountSmallExpanded } from './AccountSmallExpanded';

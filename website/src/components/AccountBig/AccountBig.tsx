@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { userActions } from '../../features/user/userSlice';
+import { userActions } from '../../features/auth/authSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
 import styles from './AccountBig.module.scss';

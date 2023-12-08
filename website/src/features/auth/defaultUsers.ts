@@ -1,4 +1,4 @@
-import { User } from './userSlice';
+import { User } from './authSlice';
 
 
 export const guest: User = {

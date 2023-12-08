@@ -5,7 +5,7 @@ import { headerReducer } from './header/headerSlice';
 import { menuReducer } from './menu/menuSlice';
 import { avatarsReducer } from './avatars/avatarsSlice';
 import { gamesReducer } from './games/gamesSlice';
-import { userReducer } from './user/userSlice';
+import { authReducer } from './auth/authSlice';
 
 
 export const rootReducer = combineReducers({
@@ -14,5 +14,5 @@ export const rootReducer = combineReducers({
     menu: menuReducer,
     avatars: avatarsReducer,
     games: gamesReducer,
-    user: userReducer,
+    auth: authReducer,
 });

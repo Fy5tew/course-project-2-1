@@ -10,7 +10,7 @@ import { useTitle } from '../../hooks/useTitle';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 import { gamesActions } from '../../features/games/gamesSlice';
-import { userActions } from '../../features/user/userSlice';
+import { userActions } from '../../features/auth/authSlice';
 
 import { PageLayout } from '../../components/PageLayout';
 import { NotFoundPage } from '../404NotFoundPage';

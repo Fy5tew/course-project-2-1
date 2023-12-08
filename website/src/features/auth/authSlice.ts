@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { Game } from '../games/gamesSlice';
+
 import { RootState } from '../store';
 
 import { guest } from './defaultUsers';
@@ -31,20 +33,25 @@ export type AuthorizedUser = {
 export type User = UnauthorizedUser | AuthorizedUser;
 
 
-export type UserState = {
+type GameId = Game['id'];
+
+
+export type AuthState = {
     isAuthorized: boolean,
     user: User,
+    cart: GameId[],
 }
 
 
-const initialState: UserState = {
+const initialState: AuthState = {
     isAuthorized: false,
     user: guest,
+    cart: [],
 };
 
 
-export const userSlice = createSlice({
-    name: 'user',
+export const authSlice = createSlice({
+    name: 'auth',
     initialState,
     reducers: {
         authorize: (state, action: PayloadAction<UserRegistration>) => {
@@ -53,10 +60,12 @@ export const userSlice = createSlice({
                 ...action.payload,
                 avatar: 'default',
             };
+            state.cart = [];
         },
         unauthorize: (state) => {
             state.isAuthorized = false;
             state.user = guest;
+            state.cart = [];
         },
         setName: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
@@ -74,20 +83,28 @@ export const userSlice = createSlice({
             if (!state.isAuthorized) return;
             state.user.password = action.payload;
         },
+        addToCart: (state, action: PayloadAction<GameId>) => {
+            if (state.cart.indexOf(action.payload) === -1) {
+                state.cart.push(action.payload);
+            }
+        },
+        removeFromCart: (state, action: PayloadAction<GameId>) => {
+            if (state.cart.indexOf(action.payload) !== -1) {
+                state.cart = state.cart.filter(gameId => gameId !== action.payload);
+            }
+        },
     }
 });
 
 
-export const userReducer = userSlice.reducer;
+export const authReducer = authSlice.reducer;
 
 
 export const userActions = {
-    ...userSlice.actions,
-    getState: (state: RootState) => state.user,
-    getUser: (state: RootState) => state.user.user,
-    getAuthorized: (state: RootState) => state.user.isAuthorized,
-    getName: (state: RootState) => state.user.user.name,
-    getAvatar: (state: RootState) => state.user.user.avatar,
-    getEmail: (state: RootState) => state.user.user.email,
-    getPassword: (state: RootState) => state.user.user.password,
+    ...authSlice.actions,
+    getState: (state: RootState) => state.auth,
+    getAuthorized: (state: RootState) => state.auth.isAuthorized,
+    getUser: (state: RootState) => state.auth.user,
+    getCart: (state: RootState) => state.auth.cart,
+    isInCart: (gameId: GameId) => (state: RootState) => state.auth.cart.indexOf(gameId) !== -1,
 };

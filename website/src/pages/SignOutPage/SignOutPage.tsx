@@ -5,7 +5,7 @@ import { useEffectOnce, useCountdown } from 'usehooks-ts';
 
 import { useTitle } from '../../hooks/useTitle';
 
-import { userActions } from '../../features/user/userSlice';
+import { userActions } from '../../features/auth/authSlice';
 
 import { PageLayout } from '../../components/PageLayout';
 

@@ -17,7 +17,7 @@ import { rootReducer } from './rootReducer';
 const persistConfig = {
     key: 'f5store',
     storage: storage,
-    whitelist: ['user'],
+    whitelist: ['auth'],
 }
 
 

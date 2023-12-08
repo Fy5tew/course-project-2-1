@@ -6,7 +6,7 @@ import { useToggle, useEffectOnce } from 'usehooks-ts';
 
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
-import { userActions } from '../../features/user/userSlice';
+import { userActions } from '../../features/auth/authSlice';
 import { avatarsActions } from '../../features/avatars/avatarsSlice';
 
 import * as validation from '../../form/formValidation';
