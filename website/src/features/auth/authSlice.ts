@@ -95,6 +95,9 @@ export const authSlice = createSlice({
             if (state.cart.includes(action.payload)) {
                 state.cart = state.cart.filter(gameId => gameId !== action.payload);
             }
+            if (state.wishlist.includes(action.payload)) {
+                state.wishlist = state.wishlist.filter(gameId => gameId !== action.payload);
+            }
             if (!state.library.includes(action.payload)) {
                 state.library.push(action.payload);
             }
