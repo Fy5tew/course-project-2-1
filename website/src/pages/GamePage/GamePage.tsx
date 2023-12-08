@@ -26,6 +26,7 @@ export function GamePage() {
     const game = useSelector(gamesActions.getGameById(gameId as string));
     const isInLibrary = useSelector(authActions.isInLibrary(gameId as string));
     const isInCart = useSelector(authActions.isInCart(gameId as string));
+    const isInWishlist = useSelector(authActions.isInWishlist(gameId as string))
 
     const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
     const [isFullScreenSliderOpened, toggleFullScreenSlider] = useToggle(false);
@@ -55,6 +56,15 @@ export function GamePage() {
         }
         else {
             dispatch(authActions.addToCart(gameId as string));
+        }
+    }
+
+    const wishlistButtonClickHandler = () => {
+        if (isInWishlist) {
+            dispatch(authActions.removeFromWishlist(gameId as string));
+        }
+        else {
+            dispatch(authActions.addToWishlist(gameId as string));
         }
     }
 
@@ -103,10 +113,16 @@ export function GamePage() {
                     }
                 </button>
                 <button
-                    className={styles.AddWishListButton}
+                    className={isInWishlist ? styles.RemoveWishlistButton : styles.AddWishlistButton}
+                    onClick={wishlistButtonClickHandler}
                 >
-                    <img src='/icons/add-white.svg' alt='' />
-                    <span>В список желаемого</span>
+                    <img 
+                        src={isInWishlist ? '/icons/remove-red.svg' : '/icons/add-white.svg'} 
+                        alt='' 
+                    />
+                    {isInWishlist
+                        ? <span>Убрать из желаемого</span>
+                        : <span>В список желаемого</span>}
                 </button>
             </div>
         )

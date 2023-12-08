@@ -143,7 +143,7 @@
 
     .Controls {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
 
         flex-direction: row;
         flex-wrap: wrap;
@@ -152,7 +152,7 @@
         padding: 1.5em 0;
 
         & > button {
-            min-width: fit-content;
+            //min-width: fit-content;
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -227,16 +227,34 @@
             }
         }
 
-        .AddWishListButton {
-            color:  white;
-            border-color: white;
+        .AddWishlistButton {
+            $color: white;
+
+            color:  $color;
+            border-color: $color;
 
             &:hover {
                 color: black;
-                background-color: white;
+                background-color: $color;
 
                 img {
                     filter: brightness(1) invert(1);
+                }
+            }
+        }
+
+        .RemoveWishlistButton {
+            $color: #ff4242;
+
+            color:  $color;
+            border-color: $color;
+
+            &:hover {
+                color: white;
+                background-color: $color;
+
+                img {
+                    filter: brightness(0) invert(1);
                 }
             }
         }

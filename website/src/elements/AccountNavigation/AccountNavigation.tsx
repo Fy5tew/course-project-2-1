@@ -26,6 +26,11 @@ const AUTHORIZED_PAGES_LINKS: LinksData = [
         iconPath: '/icons/bag.svg',
     },
     {
+        text: 'Желаемое',
+        path: '/wishlist',
+        iconPath: '/icons/list.svg',
+    },
+    {
         text: 'Выйти',
         path: '/signout',
         iconPath: '/icons/signout.svg',

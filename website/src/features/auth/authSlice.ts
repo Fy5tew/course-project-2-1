@@ -41,6 +41,7 @@ export type AuthState = {
     user: User,
     library: GameId[],
     cart: GameId[],
+    wishlist: GameId[],
 }
 
 
@@ -49,6 +50,7 @@ const initialState: AuthState = {
     user: guest,
     library: [],
     cart: [],
+    wishlist: [],
 };
 
 
@@ -64,12 +66,14 @@ export const authSlice = createSlice({
             };
             state.library = [];
             state.cart = [];
+            state.wishlist = [];
         },
         unauthorize: (state) => {
             state.isAuthorized = false;
             state.user = guest;
             state.library = [];
             state.cart = [];
+            state.wishlist = [];
         },
         setName: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
@@ -104,13 +108,26 @@ export const authSlice = createSlice({
             if (state.library.includes(action.payload)) {
                 return;
             }
-            if (state.cart.indexOf(action.payload) === -1) {
+            if (!state.cart.includes(action.payload)) {
                 state.cart.push(action.payload);
             }
         },
         removeFromCart: (state, action: PayloadAction<GameId>) => {
             if (state.cart.includes(action.payload)) {
                 state.cart = state.cart.filter(gameId => gameId !== action.payload);
+            }
+        },
+        addToWishlist: (state, action: PayloadAction<GameId>) => {
+            if (state.library.includes(action.payload)) {
+                return;
+            }
+            if (!state.wishlist.includes(action.payload)) {
+                state.wishlist.push(action.payload);
+            }
+        },
+        removeFromWishlist: (state, action: PayloadAction<GameId>) => {
+            if (state.wishlist.includes(action.payload)) {
+                state.wishlist = state.wishlist.filter(gameId => gameId !== action.payload);
             }
         },
     }
@@ -129,4 +146,6 @@ export const authActions = {
     isInLibrary: (gameId: GameId) => (state: RootState) => state.auth.library.includes(gameId),
     getCart: (state: RootState) => state.auth.cart,
     isInCart: (gameId: GameId) => (state: RootState) => state.auth.cart.includes(gameId),
+    getWishlist: (state: RootState) => state.auth.wishlist,
+    isInWishlist: (gameId: GameId) => (state: RootState) => state.auth.wishlist.includes(gameId),
 };

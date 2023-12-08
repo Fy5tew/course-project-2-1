@@ -5,6 +5,7 @@ import { StorePage } from './pages/StorePage';
 import { GamePage } from './pages/GamePage';
 import { LibraryPage } from './pages/LibraryPage';
 import { CartPage } from './pages/CartPage';
+import { WishlistPage } from './pages/WishlistPage';
 import { AccountPage } from './pages/AccountPage';
 import { AccountEditPage } from './pages/AccountEditPage';
 import { SignInPage } from './pages/SignInPage';
@@ -36,6 +37,10 @@ export function AppRouter() {
             <Route
                 path='cart'
                 element={ <CartPage /> }
+            />
+            <Route
+                path='wishlist'
+                element={ <WishlistPage /> }
             />
             <Route 
                 path='game'
