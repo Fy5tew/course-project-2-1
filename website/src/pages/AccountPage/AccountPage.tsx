@@ -8,7 +8,7 @@ export function AccountPage() {
     useTitle('Профиль');
 
     return (
-        <PageLayout>
+        <PageLayout auth='auth'>
             <h1>Ваш профиль</h1>
             <AccountBig />
         </PageLayout>
