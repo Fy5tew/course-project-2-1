@@ -39,6 +39,7 @@ type GameId = Game['id'];
 export type AuthState = {
     isAuthorized: boolean,
     user: User,
+    library: GameId[],
     cart: GameId[],
 }
 
@@ -46,6 +47,7 @@ export type AuthState = {
 const initialState: AuthState = {
     isAuthorized: false,
     user: guest,
+    library: [],
     cart: [],
 };
 
@@ -60,11 +62,13 @@ export const authSlice = createSlice({
                 ...action.payload,
                 avatar: 'default',
             };
+            state.library = [];
             state.cart = [];
         },
         unauthorize: (state) => {
             state.isAuthorized = false;
             state.user = guest;
+            state.library = [];
             state.cart = [];
         },
         setName: (state, action: PayloadAction<string>) => {
@@ -83,13 +87,29 @@ export const authSlice = createSlice({
             if (!state.isAuthorized) return;
             state.user.password = action.payload;
         },
+        addToLibrary: (state, action: PayloadAction<GameId>) => {
+            if (state.cart.includes(action.payload)) {
+                state.cart = state.cart.filter(gameId => gameId !== action.payload);
+            }
+            if (!state.library.includes(action.payload)) {
+                state.library.push(action.payload);
+            }
+        },
+        removeFromLibrary: (state, action: PayloadAction<GameId>) => {
+            if (state.library.includes(action.payload)) {
+                state.library = state.library.filter(gameId => gameId !== action.payload);
+            }
+        },
         addToCart: (state, action: PayloadAction<GameId>) => {
+            if (state.library.includes(action.payload)) {
+                return;
+            }
             if (state.cart.indexOf(action.payload) === -1) {
                 state.cart.push(action.payload);
             }
         },
         removeFromCart: (state, action: PayloadAction<GameId>) => {
-            if (state.cart.indexOf(action.payload) !== -1) {
+            if (state.cart.includes(action.payload)) {
                 state.cart = state.cart.filter(gameId => gameId !== action.payload);
             }
         },
@@ -105,6 +125,8 @@ export const authActions = {
     getState: (state: RootState) => state.auth,
     getAuthorized: (state: RootState) => state.auth.isAuthorized,
     getUser: (state: RootState) => state.auth.user,
+    getLibrary: (state: RootState) => state.auth.library,
+    isInLibrary: (gameId: GameId) => (state: RootState) => state.auth.library.includes(gameId),
     getCart: (state: RootState) => state.auth.cart,
-    isInCart: (gameId: GameId) => (state: RootState) => state.auth.cart.indexOf(gameId) !== -1,
+    isInCart: (gameId: GameId) => (state: RootState) => state.auth.cart.includes(gameId),
 };

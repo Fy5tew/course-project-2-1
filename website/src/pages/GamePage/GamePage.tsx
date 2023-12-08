@@ -24,6 +24,7 @@ export function GamePage() {
     const { gameId } = useParams();
     const isAuthorized = useSelector(authActions.getAuthorized);
     const game = useSelector(gamesActions.getGameById(gameId as string));
+    const isInLibrary = useSelector(authActions.isInLibrary(gameId as string));
     const isInCart = useSelector(authActions.isInCart(gameId as string));
 
     const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
@@ -42,6 +43,10 @@ export function GamePage() {
         return (
             <NotFoundPage />
         );
+    }
+
+    const buyButtonClickHandler = () => {
+        dispatch(authActions.addToLibrary(gameId as string));
     }
 
     const cartButtonClickHandler = () => {
@@ -64,11 +69,22 @@ export function GamePage() {
             </h3>
         )
     }
+    else if (isInLibrary) {
+        controls = (
+            <h3>
+                <img src='/icons/checkmark-circle.svg' alt='' />
+                <span>
+                    Данная игра уже находится в вашей <Link to='/library'>библиотеке</Link>
+                </span>
+            </h3>
+        )
+    }
     else {
         controls = (
             <div className={styles.Controls}>
                 <button
                     className={styles.BuyButton}
+                    onClick={buyButtonClickHandler}
                 >
                     <img src='/icons/card.svg' alt='' />
                     <span>Купить сейчас</span>
