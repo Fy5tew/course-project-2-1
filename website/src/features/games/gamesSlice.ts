@@ -27,7 +27,15 @@ export type Game = {
 export type GamesState = Game[];
 
 
-const initialState: GamesState = games;
+const initialState: GamesState = games.sort((a, b) => {
+    if (a.title < b.title) {
+        return -1;
+    }
+    if (b.title > a.title) {
+        return 1;
+    }
+    return 0;
+});
 
 
 export const gamesSlice = createSlice({
