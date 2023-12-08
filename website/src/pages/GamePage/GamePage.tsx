@@ -204,7 +204,6 @@ export function GamePage() {
                         className={styles.Carousel} 
                         showArrows={true}
                         showThumbs={false}
-                        dynamicHeight={true}
                         infiniteLoop={true}
                         swipeable={true}
                         statusFormatter={(current, total) => `${current}/${total}`}
