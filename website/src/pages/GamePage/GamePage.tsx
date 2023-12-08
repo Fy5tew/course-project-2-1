@@ -134,7 +134,9 @@ export function GamePage() {
                 <div className={styles.Head}>
                     <img className={styles.Poster} src={game.media.poster} alt='' />
                     <div className={styles.GameInfo}>
-                        <h1 className={styles.Title}>{game.title}</h1>
+                        <h1 className={styles.Title}>
+                            {game.title} ·&nbsp;<span className={styles.Price}>${game.price}</span>
+                        </h1>
                         <div className={styles.Info}>
                             <table>
                                 <tbody>
