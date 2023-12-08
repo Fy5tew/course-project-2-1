@@ -13,7 +13,10 @@ export type GameListProps = {
 export function GameList({ games }: GameListProps) {
     return (
         <div className={styles.GameList}>
-            {games.map(game => <GameCard key={game.id} game={game} />)}
+            {games.length
+                ? games.map(game => <GameCard key={game.id} game={game} />)
+                : <h3>Список игр пуст</h3>
+            }
         </div>
     );
 }
