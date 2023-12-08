@@ -13,12 +13,13 @@ import { Link } from 'react-router-dom';
 
 export type GameCardProps = {
     game: Game,
+    showPrice?: boolean,
     showAgeLimit?: boolean,
     showMetacriticScore?: boolean,
 }
 
 
-export function GameCard({ game, showAgeLimit=false, showMetacriticScore=false }: GameCardProps) {
+export function GameCard({ game, showPrice=false, showAgeLimit=false, showMetacriticScore=false }: GameCardProps) {
     const [ isExpanded, toggleExpanded, setExpanded ] = useToggle(false);
     const cardRef = useRef<HTMLDivElement>(null);
     const isHovering = useHover(cardRef);
@@ -49,7 +50,13 @@ export function GameCard({ game, showAgeLimit=false, showMetacriticScore=false }
                 {showMetacriticScore && game.metacriticScore && <span className={styles.MetacriticScore}>Metacritic: {game.metacriticScore}</span>}
             </div>
             <div className={styles.Head}>
-                <h3><ExpandIndicator isExpanded={isExpanded} />{game.title}</h3>
+                <h3>
+                    <ExpandIndicator isExpanded={isExpanded} />
+                    <span>
+                        <span className={styles.Title}>{game.title}</span>
+                        {showPrice && <span className={styles.Price}> ·&nbsp;${game.price}</span>}
+                    </span>
+                </h3>
             </div>
             <div className={styles.Expandable} data-expanded={isExpanded} onClickCapture={expandableClickHandler}>
                 <table className={styles.Info}>

@@ -25,7 +25,7 @@ export function WishlistPage() {
             <h1>Список желаемого</h1>
             {filteredGames.length
                 ? (
-                    <GameList games={filteredGames} showAgeLimit showMetacriticScore />
+                    <GameList games={filteredGames} showPrice showAgeLimit showMetacriticScore />
                 )
                 : (
                     <>

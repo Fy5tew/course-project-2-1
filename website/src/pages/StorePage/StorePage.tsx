@@ -16,7 +16,7 @@ export function StorePage() {
     return (
         <PageLayout>
             <h1>Магазин</h1>
-            <GameList games={games} showAgeLimit showMetacriticScore />
+            <GameList games={games} showPrice showAgeLimit showMetacriticScore />
         </PageLayout>
     );
 }

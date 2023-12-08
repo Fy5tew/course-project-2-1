@@ -8,6 +8,7 @@ import { games } from './gamesData';
 export type Game = {
     id: string,
     title: string,
+    price: number,
     releaseDate: string,
     ageLimit: string,
     description: string,
