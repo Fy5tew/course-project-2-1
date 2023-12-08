@@ -15,6 +15,8 @@ import { authActions } from '../../features/auth/authSlice';
 import { PageLayout } from '../../components/PageLayout';
 import { NotFoundPage } from '../404NotFoundPage';
 
+import { Alert } from '../../elements/Alert';
+
 import styles from './GamePage.module.scss';
 import './Carousel.scss';
 
@@ -71,22 +73,16 @@ export function GamePage() {
     let controls;
     if (!isAuthorized) {
         controls = (
-            <h3>
-                <img src='/icons/alert-circle.svg' alt='' />
-                <span>
-                    <Link to='/signin'>Войдите</Link> или <Link to='/signup'>зарегистрируйтесь</Link>, чтобы иметь возможность купить игру или добавить её в список желаемого
-                </span>
-            </h3>
+            <Alert icon='/icons/alert-circle.svg'>
+                <Link to='/signin'>Войдите</Link> или <Link to='/signup'>зарегистрируйтесь</Link>, чтобы иметь возможность купить игру или добавить её в список желаемого
+            </Alert>
         )
     }
     else if (isInLibrary) {
         controls = (
-            <h3>
-                <img src='/icons/checkmark-circle.svg' alt='' />
-                <span>
-                    Данная игра уже находится в вашей <Link to='/library'>библиотеке</Link>
-                </span>
-            </h3>
+            <Alert icon='/icons/checkmark-circle.svg'>
+                Данная игра уже находится в вашей <Link to='/library'>библиотеке</Link>
+            </Alert>
         )
     }
     else {
