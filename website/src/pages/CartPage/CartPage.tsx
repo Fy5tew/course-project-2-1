@@ -18,7 +18,7 @@ export function CartPage() {
     const cart = useSelector(authActions.getCart);
 
     return (
-        <PageLayout>
+        <PageLayout auth='auth'>
             <div className={styles.Cart}>
                 <div className={styles.Games}>
                     <h2>Товары в корзине ({cart.length})</h2>

@@ -12,7 +12,7 @@ export function SignInPage() {
     useTitle('Вход');
 
     return (
-        <PageLayout>
+        <PageLayout auth='guest'>
             <h1 className={styles.Title}>Вход в аккаунт</h1>
             <div className={styles.FormWrapper}>
                 <SignInForm />

@@ -12,7 +12,7 @@ export function SignUpPage() {
     useTitle('Регистрация');
 
     return(
-        <PageLayout>
+        <PageLayout auth='guest'>
             <h1 className={styles.Title}>Регистрация</h1>
             <div className={styles.FormWrapper}>
                 <SignUpForm />

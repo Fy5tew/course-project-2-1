@@ -16,7 +16,7 @@ export function LibraryPage() {
     const library = useSelector(authActions.getLibrary);
 
     return (
-        <PageLayout>
+        <PageLayout auth='auth'>
             <h1>Ваши игры</h1>
             <GameList games={games.filter(game => library.includes(game.id))} />
         </PageLayout>

@@ -23,3 +23,27 @@
         }
     }
 }
+
+
+.AuthError {
+    max-width: 600px;
+    margin: auto;
+
+    h1 {
+        text-align: center;
+    }
+
+    h3 {
+        hyphens: auto;
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+        
+            &:hover,
+            &:active {
+                text-decoration: underline;
+            }
+        }
+    }
+}

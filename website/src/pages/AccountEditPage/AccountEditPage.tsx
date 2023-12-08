@@ -8,7 +8,7 @@ export function AccountEditPage() {
     useTitle('Измение профиля');
 
     return (
-        <PageLayout>
+        <PageLayout auth='auth'>
             <h1>Настройка профиля</h1>
             <AccountEditForm />
         </PageLayout>
