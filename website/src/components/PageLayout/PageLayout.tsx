@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffectOnce } from 'usehooks-ts';
 
 import { useOnScroll } from '../../hooks/useScroll';
 
@@ -33,6 +34,12 @@ export function PageLayout({ children } : PageLayoutProps) {
             dispatch(headerActions.show());
         }
     }, 30);
+
+    useEffectOnce(() => {
+        if (!isHeaderVisible) {
+            dispatch(headerActions.show());
+        }
+    });
 
     return (
         <div className={styles.PageLayout}>
