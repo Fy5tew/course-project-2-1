@@ -73,6 +73,15 @@
 
         @media (max-width: 769px) {
             padding: 0;
+            padding-top: 2em;
+
+            .GameInfo {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 426px) {
+            padding-top: 0;
         }
 
         .Poster {
@@ -80,14 +89,6 @@
             height: fit-content;
             flex-shrink: 1;
             border-radius: 0.5em;
-
-            @media (max-width: 769px) {
-                margin-top: 2em;
-            }
-
-            @media (max-width: 426px) {
-                margin-top: 0;
-            }
         }
 
         .GameInfo {
