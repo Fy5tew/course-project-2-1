@@ -54,7 +54,7 @@
     .Cover {
         position: relative;
 
-        img {
+        & > img {
             width: 100%;
             border-top-left-radius: $border-radius;
             border-top-right-radius: $border-radius;
@@ -83,6 +83,19 @@
             background-color: rgba(0, 0, 0, 0.6);
             border: 0.25em solid var(--color-primary);
             border-top-left-radius: $border-radius;
+        }
+
+        .ActionButton {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3em;
+            font-size: calc(1em - 0.3vw);
+            border-top-right-radius: $border-radius;
+
+            & > * {
+                border-top-right-radius: $border-radius;
+            }
         }
     }
 

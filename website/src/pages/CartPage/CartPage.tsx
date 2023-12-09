@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
 
+import { Game } from '../../features/games/gamesSlice';
+
 import { useTitle } from '../../hooks/useTitle';
 
 import { gamesActions } from '../../features/games/gamesSlice';
@@ -25,7 +27,15 @@ export function CartPage() {
     const games = useSelector(gamesActions.getAllGames);
     const cart = useSelector(authActions.getCart);
 
-    const filteredGames = games.filter(game => cart.includes(game.id));
+    const filteredGames = games.filter(game => cart.includes(game.id)).sort((a, b) => {
+        if (a.price < b.price) {
+            return 1;
+        }
+        if (a.price > b.price) {
+            return -1;
+        }
+        return 0;
+    });
 
     const totalPrice = Math.round(
         filteredGames
@@ -63,12 +73,25 @@ export function CartPage() {
         });
     };
 
+    const removeButtonClickHandler = (game: Game) => () => {
+        dispatch(authActions.removeFromCart(game.id));
+    };
+
+    const RemoveButton = ({game}: {game: Game}) => (
+        <img 
+            className={styles.RemoveButton}
+            onClick={removeButtonClickHandler(game)}
+            src='/icons/cross-circle-red.svg' 
+            alt=''
+        />
+    );
+
     return (
         <PageLayout auth='auth'>
             <div className={styles.Cart}>
                 <div className={styles.Games}>
                     <h2>Товары в корзине ({filteredGames.length})</h2>
-                    <GameList games={filteredGames} showPrice showMetacriticScore />
+                    <GameList games={filteredGames} ActionButton={RemoveButton} showPrice showMetacriticScore />
                 </div>
                 <div className={styles.Sidebar}>
                     <h2>Описание заказа</h2>

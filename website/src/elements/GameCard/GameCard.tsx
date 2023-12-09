@@ -16,10 +16,17 @@ export type GameCardProps = {
     showPrice?: boolean,
     showAgeLimit?: boolean,
     showMetacriticScore?: boolean,
+    ActionButton?: (props: { game: Game }) => JSX.Element,
 }
 
 
-export function GameCard({ game, showPrice=false, showAgeLimit=false, showMetacriticScore=false }: GameCardProps) {
+export function GameCard({ 
+    game,
+    showPrice=false, 
+    showAgeLimit=false, 
+    showMetacriticScore=false,
+    ActionButton,
+}: GameCardProps) {
     const [ isExpanded, toggleExpanded, setExpanded ] = useToggle(false);
     const cardRef = useRef<HTMLDivElement>(null);
     const isHovering = useHover(cardRef);
@@ -48,6 +55,7 @@ export function GameCard({ game, showPrice=false, showAgeLimit=false, showMetacr
                 <img src={game.media.cover} alt='' />
                 {showAgeLimit && game.ageLimit && <span className={styles.AgeLimit}>{game.ageLimit}</span>}
                 {showMetacriticScore && game.metacriticScore && <span className={styles.MetacriticScore}>{game.metacriticScore}</span>}
+                {ActionButton && <div className={styles.ActionButton}><ActionButton game={game} /></div>}
             </div>
             <div className={styles.Head}>
                 <h3>
