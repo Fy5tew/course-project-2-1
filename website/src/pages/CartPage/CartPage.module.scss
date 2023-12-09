@@ -13,18 +13,140 @@
 
         & > :last-child {
             order: -1;
+
+            &.Sidebar {
+                position: unset;
+            }
         }
     }
 
     .Sidebar {
+        position: sticky;
+        top: 1em;
+
         padding: 1em;
 
         border-radius: 1em;
         background-color: #2d2f29;
 
+        height: fit-content;
+
+        transition: all 0.2s ease-in-out;
+
+        @media (hover: hover) {
+            &:hover {
+                scale: 1.01;
+                box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+            }
+        }
+
         h2 {
             margin: 0;
             text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1ch;
+
+                padding: 0.5em 0;
+
+                .Separator {
+                    display: inline-block;
+                    flex-grow: 1;
+                    border-bottom: 0.2em dotted var(--color-secondary);
+                    margin-bottom: 0.2em;
+                    height: 100%;
+                }
+
+                span {
+                    font-size: 1.1em;
+
+                    &.Title {
+                        color: #696c63;
+                    }
+
+                    &.FinalPrice {
+                        color: var(--color-primary);
+                    }
+                }
+            }
+        }
+
+        .Controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            padding: 1em 0;
+
+            & > button {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 1ch;
+    
+                cursor: pointer;
+                padding: 0.5em;
+                border-radius: 0.5em;
+                border-width: 0.15em;
+    
+                font-size: 1.1em;
+                font-family: var(--font-primary);
+    
+                background-color: transparent;
+    
+                transition: all 0.2s ease-in-out;
+    
+                img {
+                    width: 1.5em;
+                    aspect-ratio: 1/1;
+                }
+    
+                span {
+                    text-align: left;
+                }
+            }
+    
+            .BuyButton {
+                $color: var(--color-primary);
+    
+                color: $color;
+                border-color: $color;
+    
+                &:hover {
+                    color: white;
+                    background-color: $color;
+    
+                    img {
+                        filter: brightness(0) invert(1);
+                    }
+                }
+            }
+    
+            .ClearCartButton {
+                $color: #ff4242;
+    
+                color: $color;
+                border-color: $color;
+    
+                &:hover {
+                    color: white;
+                    background-color: $color;
+    
+                    img {
+                        filter: brightness(0) invert(1);
+                    }
+                }
+            }
         }
     }
 }
