@@ -3,10 +3,12 @@
 
     transition: all 0.2s ease-in-out;
 
-    &:hover {
-        scale: 1.1;
-        cursor: pointer;
-        filter: none;
+    @media (hover: hover) {
+        &:hover {
+            scale: 1.1;
+            cursor: pointer;
+            filter: none;
+        }
     }
 }
 

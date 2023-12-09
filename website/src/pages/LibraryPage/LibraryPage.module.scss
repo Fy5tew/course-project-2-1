@@ -1,0 +1,46 @@
+.Head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.2em 1em;
+}
+
+.LikeButton {
+    filter: opacity(0.6);
+
+    transition: all 0.2s ease-in-out;
+
+    @media (hover: hover) {
+        &:hover {
+            scale: 1.1;
+            cursor: pointer;
+            filter: none;
+        }
+    }
+}
+
+.CategoryChange {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.2em 1em;
+    font-size: 0.5em;
+
+    cursor: pointer;
+
+    .ChangeButton {
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            color: var(--color-primary);
+            text-decoration-line: underline;
+            text-decoration-color: var(--color-primary);
+            text-decoration-thickness: 0.2em;
+        }
+
+        &[data-selected="true"] {
+            color: var(--color-primary);
+        }
+    }
+}

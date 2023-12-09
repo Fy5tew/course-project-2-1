@@ -40,6 +40,7 @@ export type AuthState = {
     isAuthorized: boolean,
     user: User,
     library: GameId[],
+    favorites: GameId[],
     cart: GameId[],
     wishlist: GameId[],
 }
@@ -49,6 +50,7 @@ const initialState: AuthState = {
     isAuthorized: false,
     user: guest,
     library: [],
+    favorites: [],
     cart: [],
     wishlist: [],
 };
@@ -65,6 +67,7 @@ export const authSlice = createSlice({
                 avatar: 'default',
             };
             state.library = [];
+            state.favorites = [];
             state.cart = [];
             state.wishlist = [];
         },
@@ -72,6 +75,7 @@ export const authSlice = createSlice({
             state.isAuthorized = false;
             state.user = guest;
             state.library = [];
+            state.favorites = [];
             state.cart = [];
             state.wishlist = [];
         },
@@ -103,8 +107,24 @@ export const authSlice = createSlice({
             }
         },
         removeFromLibrary: (state, action: PayloadAction<GameId>) => {
+            if (state.favorites.includes(action.payload)) {
+                state.favorites = state.favorites.filter(gameId => gameId !== action.payload);
+            }
             if (state.library.includes(action.payload)) {
                 state.library = state.library.filter(gameId => gameId !== action.payload);
+            }
+        },
+        addToFavorites: (state, action: PayloadAction<GameId>) => {
+            if (!state.library.includes(action.payload)) {
+                return;
+            }
+            if (!state.favorites.includes(action.payload)) {
+                state.favorites.push(action.payload);
+            }
+        },
+        removeFromFavorites: (state, action: PayloadAction<GameId>) => {
+            if (state.favorites.includes(action.payload)) {
+                state.favorites = state.favorites.filter(gameId => gameId !== action.payload);
             }
         },
         addToCart: (state, action: PayloadAction<GameId>) => {
@@ -147,6 +167,8 @@ export const authActions = {
     getUser: (state: RootState) => state.auth.user,
     getLibrary: (state: RootState) => state.auth.library,
     isInLibrary: (gameId: GameId) => (state: RootState) => state.auth.library.includes(gameId),
+    getFavorites: (state: RootState) => state.auth.favorites,
+    isInFavorites: (gameId: GameId) => (state: RootState) => state.auth.favorites.includes(gameId),
     getCart: (state: RootState) => state.auth.cart,
     isInCart: (gameId: GameId) => (state: RootState) => state.auth.cart.includes(gameId),
     getWishlist: (state: RootState) => state.auth.wishlist,
