@@ -146,7 +146,8 @@ export function GamePage() {
         <PageLayout>
             <div className={styles.GamePage}>
                 <div className={styles.Cover}>
-                    <img className={styles.CoverImage} src={game.media.cover} alt='' />
+                    <img className={styles.Desctop} src={game.media.cover} alt='' />
+                    <img className={styles.Mobile} src={game.media.poster} alt='' />
                     <div className={styles.CoverFilter}></div>
                 </div>
                 <div className={styles.Head}>
