@@ -30,14 +30,14 @@ const LINKS = [
         icon: '/icons/bag.svg',
     },
     {
-        to: '/account',
-        text: 'Профиль',
-        icon: '/icons/account.svg',
-    },
-    {
         to: '/wishlist',
         text: 'Желаемое',
         icon: '/icons/list.svg',
+    },
+    {
+        to: '/account',
+        text: 'Профиль',
+        icon: '/icons/account.svg',
     },
 ];
 
