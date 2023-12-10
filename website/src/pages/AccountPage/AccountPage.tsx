@@ -58,7 +58,19 @@ export function AccountPage() {
         <PageLayout auth='auth'>
             <div className={styles.AccountPage}>
                 <h1>Ваш профиль</h1>
-                <AccountBig />
+                <div className={styles.AccountInfo}>
+                    <AccountBig />
+                    <div className={styles.GamesStats}>
+                        <div className={styles.Stat}>
+                            <span className={styles.Library}>{library.length}</span>
+                            <h3>В библиотеке</h3>
+                        </div>
+                        <div className={styles.Stat}>
+                            <span className={styles.Favorites}>{favorites.length}</span>
+                            <h3>Любимых игр</h3>
+                        </div>
+                    </div>
+                </div>
                 <h2>
                     <span>Любимые игры</span>
                     <Link to='/library/fav'>Полный список</Link>
