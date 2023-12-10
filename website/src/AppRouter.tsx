@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { IndexPage } from './pages/IndexPage';
+import { HomePage } from './pages/HomePage';
 import { StorePage } from './pages/StorePage';
 import { GamePage } from './pages/GamePage';
 import { LibraryPage } from './pages/LibraryPage';
@@ -24,7 +24,7 @@ export function AppRouter() {
             />
             <Route 
                 path='home'
-                element={ <IndexPage /> }
+                element={ <HomePage /> }
             />
             <Route 
                 path='store' 
