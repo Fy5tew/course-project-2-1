@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { useToggle } from 'usehooks-ts';
+import { useToggle, useEffectOnce } from 'usehooks-ts';
 import { useSnackbar } from 'notistack';
 
 import { Carousel } from 'react-responsive-carousel';
@@ -38,6 +38,12 @@ export function GamePage() {
     const fullScreenSliderRef = useRef(null);
 
     useTitle(game?.title);
+
+    useEffectOnce(() => {
+        if (game){
+            dispatch(authActions.pushRecentlyViewed(game?.id));
+        }
+    });
 
     useOnClickOutside(fullScreenSliderRef, () => {
         if (isFullScreenSliderOpened) {

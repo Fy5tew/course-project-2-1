@@ -39,6 +39,7 @@ type GameId = Game['id'];
 export type AuthState = {
     isAuthorized: boolean,
     user: User,
+    recentlyViewed: GameId[],
     library: GameId[],
     favorites: GameId[],
     cart: GameId[],
@@ -49,6 +50,7 @@ export type AuthState = {
 const initialState: AuthState = {
     isAuthorized: false,
     user: guest,
+    recentlyViewed: [],
     library: [],
     favorites: [],
     cart: [],
@@ -66,6 +68,7 @@ export const authSlice = createSlice({
                 ...action.payload,
                 avatar: 'default',
             };
+            state.recentlyViewed = [];
             state.library = [];
             state.favorites = [];
             state.cart = [];
@@ -74,6 +77,7 @@ export const authSlice = createSlice({
         unauthorize: (state) => {
             state.isAuthorized = false;
             state.user = guest;
+            state.recentlyViewed = [];
             state.library = [];
             state.favorites = [];
             state.cart = [];
@@ -94,6 +98,10 @@ export const authSlice = createSlice({
         setPassword: (state, action: PayloadAction<string>) => {
             if (!state.isAuthorized) return;
             state.user.password = action.payload;
+        },
+        pushRecentlyViewed: (state, action: PayloadAction<GameId>) => {
+            state.recentlyViewed = state.recentlyViewed.filter(gameId => gameId !== action.payload);
+            state.recentlyViewed.unshift(action.payload);
         },
         addToLibrary: (state, action: PayloadAction<GameId>) => {
             if (state.cart.includes(action.payload)) {
@@ -165,6 +173,7 @@ export const authActions = {
     getState: (state: RootState) => state.auth,
     getAuthorized: (state: RootState) => state.auth.isAuthorized,
     getUser: (state: RootState) => state.auth.user,
+    getRecentlyViewed: (state: RootState) => state.auth.recentlyViewed,
     getLibrary: (state: RootState) => state.auth.library,
     isInLibrary: (gameId: GameId) => (state: RootState) => state.auth.library.includes(gameId),
     getFavorites: (state: RootState) => state.auth.favorites,
