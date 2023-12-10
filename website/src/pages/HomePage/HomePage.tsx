@@ -96,7 +96,6 @@ export function HomePage() {
                 <GameList games={popularGames} showAgeLimit showMetacriticScore showPrice />
                 <h2>
                     <span>Недавно просмотренные</span>
-                    <Link to='/store'>Все игры</Link>
                 </h2>
                 <GameList games={recentlyViewedGames} showAgeLimit showMetacriticScore showPrice />
             </div>
