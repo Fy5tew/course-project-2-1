@@ -30,6 +30,8 @@
     cursor: pointer;
 
     .ChangeButton {
+        color: var(--color-text);
+        text-decoration: none;
         transition: all 0.2s ease-in-out;
 
         &:hover {

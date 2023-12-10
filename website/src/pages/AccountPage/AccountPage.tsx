@@ -61,12 +61,12 @@ export function AccountPage() {
                 <AccountBig />
                 <h2>
                     <span>Любимые игры</span>
-                    <Link to='/library'>Полный список</Link>
+                    <Link to='/library/fav'>Полный список</Link>
                 </h2>
                 <GameList games={favoritesGames} ActionButton={LikeButton} />
                 <h2>
                     <span>Остальная библиотека</span>
-                    <Link to='/library'>Полный список</Link>
+                    <Link to='/library/all'>Полный список</Link>
                 </h2>
                 <GameList games={libraryGames} />
             </div>

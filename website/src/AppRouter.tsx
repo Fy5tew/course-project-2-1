@@ -32,6 +32,10 @@ export function AppRouter() {
             />
             <Route 
                 path='library' 
+                element={ <Navigate replace to='/library/all' /> } 
+            />
+            <Route 
+                path='library/:viewType' 
                 element={ <LibraryPage /> } 
             />
             <Route

@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-
-import { Link } from 'react-router-dom';
+import { useEffectOnce } from 'usehooks-ts';
 
 import { useTitle } from '../../hooks/useTitle';
 
@@ -21,9 +20,11 @@ export function LibraryPage() {
     useTitle('Библиотека');
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
 
-    const [viewType, setViewType] = useState<'all' | 'fav'>('all');
+    const { viewType } = useParams();
+
     const allGames = useSelector(gamesActions.getAllGames);
     const library = useSelector(authActions.getLibrary);
     const favorites = useSelector(authActions.getFavorites);
@@ -34,9 +35,13 @@ export function LibraryPage() {
         filteredGames = filteredGames.filter(game => favorites.includes(game.id));
     }
 
-    const changeCategory = (category: 'all' | 'fav') => () => {
-        setViewType(category);
-    }
+    useEffectOnce(() => {
+        if (!['all', 'fav'].includes(viewType || '')) {
+            navigate('/library/all', {
+                replace: true,
+            });
+        }
+    });
 
     const updateFavorites = (game: Game) => (event: React.MouseEvent) => {
         event.stopPropagation();
@@ -101,20 +106,20 @@ export function LibraryPage() {
             <h1 className={styles.Head}>
                 <span>Ваши игры</span>
                 <div className={styles.CategoryChange}>
-                    <span 
-                        className={styles.ChangeButton} 
-                        onClick={changeCategory('all')}
+                    <Link
+                        to='/library/all'
+                        className={styles.ChangeButton}
                         data-selected={viewType === 'all'}
                     >
                         Все игры
-                    </span>
-                    <span 
+                    </Link>
+                    <Link 
+                        to='/library/fav'
                         className={styles.ChangeButton}
-                        onClick={changeCategory('fav')}
                         data-selected={viewType === 'fav'}
                     >
                         Избранное
-                    </span>
+                    </Link>
                 </div>
             </h1>
             { content }
