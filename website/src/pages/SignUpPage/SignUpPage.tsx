@@ -13,13 +13,15 @@ export function SignUpPage() {
 
     return(
         <PageLayout auth='guest'>
-            <h1 className={styles.Title}>Регистрация</h1>
-            <div className={styles.FormWrapper}>
-                <SignUpForm />
+            <div className={styles.SignUpPage}>
+                <h1 className={styles.Title}>Регистрация</h1>
+                <div className={styles.FormWrapper}>
+                    <SignUpForm />
+                </div>
+                <p className={styles.HelpText}>
+                    Уже есть аккаунт? <Link to='/signin'>Войдите</Link> в него!
+                </p>
             </div>
-            <p className={styles.HelpText}>
-                Уже есть аккаунт? <Link to='/signin'>Войдите</Link> в него!
-            </p>
         </PageLayout>
     );
 }

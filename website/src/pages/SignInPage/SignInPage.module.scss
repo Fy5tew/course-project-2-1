@@ -1,21 +1,25 @@
-.Title {
-    text-align: center;
-}
+.SignInPage {
+    margin: 20vh 0;
 
-.FormWrapper {
-    max-width: 400px;
-    margin: auto;
-}
-
-.HelpText {
-    text-align: center;
-
-    a {
-        color: var(--color-primary);
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
+    .Title {
+        text-align: center;
+    }
+    
+    .FormWrapper {
+        max-width: 400px;
+        margin: auto;
+    }
+    
+    .HelpText {
+        text-align: center;
+    
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+    
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
