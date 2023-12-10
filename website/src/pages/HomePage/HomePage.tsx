@@ -25,14 +25,14 @@ const LINKS = [
         icon: '/icons/library.svg',
     },
     {
-        to: '/cart',
-        text: 'Корзина',
-        icon: '/icons/bag.svg',
-    },
-    {
         to: '/wishlist',
         text: 'Желаемое',
         icon: '/icons/list.svg',
+    },
+    {
+        to: '/cart',
+        text: 'Корзина',
+        icon: '/icons/bag.svg',
     },
     {
         to: '/account',
