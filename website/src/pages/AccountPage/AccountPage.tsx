@@ -67,7 +67,7 @@ export function AccountPage() {
                         </div>
                         <div className={styles.Stat}>
                             <span className={styles.Favorites}>{favorites.length}</span>
-                            <h3>Любимых игр</h3>
+                            <h3>Любимых</h3>
                         </div>
                     </div>
                 </div>
