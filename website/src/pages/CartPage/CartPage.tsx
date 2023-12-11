@@ -75,6 +75,9 @@ export function CartPage() {
 
     const removeButtonClickHandler = (game: Game) => () => {
         dispatch(authActions.removeFromCart(game.id));
+        enqueueSnackbar<'error'>(`«${game.title}» удалена из корзины`, {
+            variant: 'error',
+        });
     };
 
     const RemoveButton = ({game}: {game: Game}) => (
